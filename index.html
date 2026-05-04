@@ -3,1369 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pipeup — India's first free creator community for students</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.16/dist/lenis.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --lime:#A8E63D;
-  --lime-h:#bef055;
-  --lime-d:#2d5a0e;
-  --lime-t:#edf7d6;
-  --ink:#111111;
-  --sub:#72787f;
-  --surf:#F7FAF4;
-  --white:#ffffff;
-  --bd:rgba(0,0,0,0.07);
-  --glass:rgba(255,255,255,0.62);
-  --glass-b:rgba(255,255,255,0.88);
-}
-html{scroll-behavior:auto}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.lenis.lenis-smooth{scroll-behavior:auto}
-.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
-.lenis.lenis-stopped{overflow:hidden}
-
-/* ── UTILS ── */
-.container{max-width:1080px;margin:0 auto;padding:0 6%}
-.reveal{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
-.js .reveal{opacity:0;transform:translateY(28px)}
-.reveal.vis{opacity:1;transform:translateY(0)}
-.lime{color:var(--lime-d)}
-.tag{display:inline-block;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--lime-t);color:var(--lime-d);letter-spacing:.03em}
-.section-head{max-width:620px}
-.section-head.centered{margin:0 auto;text-align:center}
-.split-parent{overflow:hidden}
-.split-word{
-  display:inline-block;opacity:1;transform:none;
-  will-change:transform,opacity;
-}
-.js .split-word{opacity:.18;transform:translateY(110%)}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  height:60px;display:flex;align-items:center;
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--bd);
-}
-.nav-inner{width:100%;max-width:1080px;margin:0 auto;padding:0 6%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.04em;text-decoration:none}
-.logo span{color:var(--lime-d)}
-.nav-links{display:flex;align-items:center;gap:26px}
-.nav-links a{font-size:13px;color:var(--sub);text-decoration:none;transition:color .15s}
-.nav-links a:hover{color:var(--ink)}
-.nav-btn{
-  font-size:13px;font-weight:500;color:var(--lime-d);
-  background:var(--lime);padding:8px 18px;border-radius:8px;
-  text-decoration:none;transition:background .15s;
-}
-.nav-btn:hover{background:var(--lime-h);color:var(--lime-d)}
-
-/* ── HERO ── */
-#hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  padding:100px 6% 0;
-  background:var(--white);
-  text-align:center;
-}
-.blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
-.b1{width:580px;height:580px;background:rgba(168,230,61,0.15);top:-140px;left:-100px}
-.b2{width:500px;height:500px;background:rgba(197,242,106,0.1);top:-100px;right:-80px}
-.b3{width:300px;height:300px;background:rgba(168,230,61,0.08);bottom:160px;right:20%}
-
-.hero-inner{position:relative;z-index:5;max-width:700px;margin:0 auto}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--lime-t);border:1px solid rgba(168,230,61,0.4);
-  border-radius:20px;padding:5px 14px 5px 10px;
-  font-size:12px;font-weight:500;color:var(--lime-d);margin-bottom:26px;
-}
-.pulse{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-
-h1{
-  font-size:clamp(40px,6vw,68px);font-weight:700;
-  line-height:1.06;letter-spacing:-.038em;color:var(--ink);
-  margin-bottom:20px;
-}
-.ul{position:relative;display:inline-block}
-.ul::after{
-  content:'';position:absolute;left:0;bottom:-4px;
-  width:100%;height:5px;background:var(--lime);border-radius:3px;
-}
-.hero-sub{
-  font-size:17px;color:var(--sub);line-height:1.65;
-  font-weight:300;max-width:480px;margin:0 auto 36px;
-}
-
-/* single CTA */
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:52px}
-.btn-main{
-  display:inline-flex;align-items:center;gap:9px;
-  background:var(--ink);color:var(--white);
-  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
-  padding:15px 34px;border-radius:13px;border:none;
-  cursor:pointer;text-decoration:none;letter-spacing:-.01em;
-  position:relative;overflow:hidden;transition:color .25s;
-}
-.btn-main::before{
-  content:'';position:absolute;inset:0;background:var(--lime);
-  transform:translateX(-101%);transition:transform .28s ease;z-index:0;
-}
-.btn-main:hover::before{transform:translateX(0)}
-.btn-main:hover{color:var(--lime-d)}
-.btn-main:hover .arr-ic{transform:translateX(3px)}
-.btn-main > *{position:relative;z-index:1}
-.arr-ic{transition:transform .2s;display:flex;align-items:center}
-.arr-ic svg{width:16px;height:16px}
-.note{font-size:12px;color:#aaa;display:flex;align-items:center;gap:5px}
-.note svg{width:12px;height:12px;color:var(--lime)}
-
-/* creator strip */
-.strip-lbl{
-  font-size:11px;font-weight:500;color:var(--sub);
-  letter-spacing:.05em;margin-bottom:18px;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-}
-.strip-lbl::before,.strip-lbl::after{content:'';width:48px;height:1px;background:var(--bd)}
-.rail-outer{
-  width:100%;overflow:hidden;
-  -webkit-mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
-  mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
-}
-.rail{display:flex;gap:12px;width:max-content;animation:scroll 30s linear infinite}
-.rail:hover{animation-play-state:paused}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ccard{
-  width:154px;flex-shrink:0;
-  background:var(--white);border:1px solid rgba(0,0,0,0.07);
-  border-radius:16px;padding:16px 12px 12px;text-align:center;
-  transition:border-color .2s,transform .2s;cursor:default;
-}
-.ccard:hover{border-color:rgba(168,230,61,0.5);transform:translateY(-3px)}
-.av-w{position:relative;display:inline-block;margin-bottom:8px}
-.av{
-  width:50px;height:50px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:17px;font-weight:700;
-  box-shadow:0 0 0 2.5px rgba(168,230,61,0.3);
-}
-.ldot{
-  position:absolute;bottom:1px;right:1px;
-  width:11px;height:11px;border-radius:50%;
-  background:#22c55e;border:2px solid var(--white);
-}
-.cn{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:1px}
-.ch{font-size:10px;color:var(--sub);margin-bottom:7px}
-.cn2{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--lime-t);color:var(--lime-d)}
-.hero-fade{
-  position:absolute;bottom:0;left:0;right:0;height:80px;
-  background:linear-gradient(to top,var(--white),transparent);
-  z-index:6;pointer-events:none;
-}
-
-/* ── SECTIONS shared ── */
-section{padding:100px 0}
-.s-eye{font-size:11px;font-weight:600;color:var(--lime-d);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
-.s-h{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--ink);margin-bottom:16px}
-.s-sub{font-size:16px;color:var(--sub);line-height:1.65;font-weight:300;max-width:520px}
-
-/* ── PROBLEM ── */
-#problem{background:var(--surf)}
-.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:56px}
-.prob-quote{
-  font-size:clamp(20px,2.8vw,30px);font-weight:500;
-  line-height:1.35;letter-spacing:-.02em;color:var(--ink);
-  font-style:italic;
-}
-.prob-quote em{font-style:normal;color:var(--lime-d)}
-.prob-items{display:flex;flex-direction:column;gap:16px}
-.prob-item{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:18px 20px;background:var(--white);
-  border-radius:14px;border:1px solid var(--bd);
-}
-.prob-icon{
-  width:36px;height:36px;border-radius:10px;
-  background:var(--lime-t);display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;font-size:16px;
-}
-.prob-t{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
-.prob-d{font-size:13px;color:var(--sub);line-height:1.5}
-
-/* ── VISION ── */
-#vision{
-  background:
-    radial-gradient(circle at top right, rgba(168,230,61,0.1), transparent 30%),
-    linear-gradient(180deg, #111111 0%, #171a14 100%);
-  position:relative;overflow-x:clip;overflow-y:visible;
-}
-.v-blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;background:rgba(168,230,61,0.1)}
-.vb1{width:500px;height:500px;top:-120px;right:-80px}
-.vb2{width:350px;height:350px;bottom:-80px;left:-60px}
-#vision .s-eye{color:var(--lime)}
-#vision .s-h{color:var(--white)}
-#vision .s-sub{color:rgba(255,255,255,0.5)}
-.vision-shell{position:relative;z-index:1}
-.vision-top{
-  display:grid;grid-template-columns:minmax(0, 440px) 1fr;
-  gap:40px;align-items:end;
-}
-.vision-kicker{
-  font-size:13px;line-height:1.75;color:rgba(255,255,255,0.56);
-  max-width:360px;justify-self:end;padding-bottom:10px;
-}
-.vision-stage{
-  min-height:145vh;position:relative;margin-top:76px;
-}
-.vision-sticky{
-  position:relative;min-height:100%;
-  display:grid;grid-template-columns:minmax(220px, 1fr) minmax(360px, 430px) minmax(220px, 1fr);
-  gap:62px;align-items:start;
-}
-.vision-column{display:grid;gap:36px;padding-top:26px}
-.vision-column:first-child .vision-step:nth-child(2){margin-left:28px}
-.vision-column:first-child .vision-step:nth-child(3){margin-top:-2px}
-.vision-column:last-child{padding-top:82px}
-.vision-column:last-child .vision-step:nth-child(2){margin-right:28px}
-.vision-column:last-child .vision-step:nth-child(3){margin-top:-2px}
-.vision-step{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:22px;padding:20px 20px 18px;
-  transform:scale(0.95);opacity:0.15;
-  transition:border-color .4s ease,background .4s ease,box-shadow .4s ease;
-}
-.vision-step.is-active{
-  border-color:rgba(168,230,61,0.42);
-  background:rgba(255,255,255,0.08);
-  box-shadow:0 24px 70px rgba(0,0,0,0.24);
-}
-
-.vision-step-head{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-bottom:14px;
-}
-.v-num{
-  font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);
-  letter-spacing:.14em;
-}
-.v-label{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;
-}
-.soon{background:rgba(168,230,61,0.15);color:var(--lime)}
-.beta{background:rgba(255,193,7,0.15);color:#FFC107}
-.live{background:rgba(34,197,94,0.15);color:#9df0ba}
-.v-t{font-size:17px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
-.v-d{font-size:13px;color:rgba(255,255,255,0.54);line-height:1.65;max-width:28ch}
-.vision-orbit{
-  position:sticky;top:72px;align-self:start;
-  min-height:calc(100vh - 40px);
-  display:flex;align-items:center;justify-content:center;
-}
-/* Rings and nodes removed for cleaner styling and better motion performance */
-.vision-phone{
-  position:relative;z-index:2;width:min(100%, 372px);min-height:540px;
-  border-radius:40px;padding:24px 22px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border:1px solid rgba(255,255,255,0.12);
-  box-shadow:0 30px 80px rgba(0,0,0,0.35);
-  overflow:hidden;
-}
-.vision-phone.is-settled{
-  box-shadow:0 36px 110px rgba(0,0,0,0.38);
-}
-.vision-phone::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(168,230,61,0.12), transparent 38%);
-  pointer-events:none;
-}
-.vision-phone-top{
-  display:flex;align-items:center;justify-content:space-between;
-  position:relative;z-index:1;margin-bottom:22px;
-}
-.vision-pill{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-  border-radius:999px;padding:8px 12px;font-size:11px;color:rgba(255,255,255,0.72);
-}
-.vision-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--lime)}
-.vision-status{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);
-}
-.vision-screen{
-  position:relative;z-index:1;background:rgba(8,8,8,0.38);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:30px;padding:20px;
-}
-.vision-screen-card{
-  border-radius:22px;padding:20px 18px;
-  background:rgba(255,255,255,0.04);margin-bottom:14px;
-}
-.vision-screen-label{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,0.38);margin-bottom:10px;
-}
-.vision-screen-title{
-  font-size:28px;line-height:1.02;letter-spacing:-.05em;
-  color:var(--white);margin-bottom:10px;max-width:8ch;
-}
-.vision-screen-desc{
-  font-size:13px;line-height:1.6;color:rgba(255,255,255,0.56);
-}
-.vision-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.vision-mini{
-  border-radius:16px;padding:14px 12px;background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.06);
-}
-.vision-mini strong{
-  display:block;font-size:18px;color:var(--white);margin-bottom:4px;
-}
-.vision-mini span{font-size:11px;line-height:1.5;color:rgba(255,255,255,0.48)}
-
-/* ── WHAT'S INSIDE ── */
-#inside{background:var(--white)}
-.inside-head{max-width:560px}
-.inside-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
-.in-card{
-  background:var(--surf);border:1px solid var(--bd);
-  border-radius:20px;padding:32px 28px;
-  transition:border-color .2s,transform .2s;
-}
-.in-card:hover{border-color:rgba(168,230,61,0.4);transform:translateY(-3px)}
-.in-icon{font-size:28px;margin-bottom:18px;display:block}
-.in-t{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.02em}
-.in-d{font-size:14px;color:var(--sub);line-height:1.65}
-.in-tag{margin-top:16px}
-
-/* ── FREE ── */
-#free{background:var(--surf)}
-.free-inner{
-  max-width:680px;margin:0 auto;text-align:center;
-}
-.free-box{
-  background:var(--glass);border:1px solid var(--glass-b);
-  border-radius:24px;padding:52px 48px;
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  position:relative;overflow:hidden;margin-top:48px;
-}
-.free-blob{
-  position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;
-  width:300px;height:300px;background:rgba(168,230,61,0.18);
-  top:-80px;right:-60px;
-}
-.free-box p{
-  font-size:clamp(18px,2.5vw,26px);font-weight:500;
-  line-height:1.45;color:var(--ink);letter-spacing:-.015em;
-  position:relative;z-index:1;
-}
-.free-box p em{font-style:normal;color:var(--lime-d)}
-.free-box .sub-note{
-  font-size:14px;color:var(--sub);font-weight:300;
-  margin-top:20px;line-height:1.6;position:relative;z-index:1;
-}
-
-/* ── WHO IS IT FOR ── */
-#niches{background:linear-gradient(180deg,var(--white) 0%, #f9fbf6 100%)}
-.who-grid{
-  display:grid;grid-template-columns:minmax(0, 1.05fr) minmax(320px, .95fr);
-  gap:30px;align-items:center;margin-top:52px;
-}
-.who-copy{max-width:560px}
-.who-points{display:grid;gap:12px;margin-top:28px}
-.who-point{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:18px 18px;border-radius:18px;background:rgba(247,250,244,0.92);
-  border:1px solid var(--bd);
-}
-.who-point-num{
-  width:34px;height:34px;border-radius:12px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:700;color:var(--lime-d);
-  background:var(--lime-t);
-}
-.who-point-t{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.who-point-d{font-size:13px;line-height:1.65;color:var(--sub)}
-.who-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.who-badge{
-  padding:9px 14px;border-radius:999px;background:var(--white);
-  border:1px solid rgba(168,230,61,0.22);font-size:12px;
-  color:var(--sub);
-}
-.who-badge strong{color:var(--ink);font-weight:600}
-.who-stage{
-  position:relative;min-height:500px;border-radius:30px;padding:28px;
-  background:
-    radial-gradient(circle at top left, rgba(168,230,61,0.16), transparent 34%),
-    linear-gradient(180deg, #151715 0%, #20221b 100%);
-  overflow:hidden;box-shadow:0 28px 90px rgba(14,18,8,0.12);
-}
-.who-orb{
-  position:absolute;border-radius:50%;pointer-events:none;
-  border:1px solid rgba(255,255,255,0.08);
-}
-.who-orb.o1{width:360px;height:360px;top:64px;left:50%;transform:translateX(-50%)}
-.who-orb.o2{width:250px;height:250px;top:120px;left:50%;transform:translateX(-50%)}
-.who-dot{
-  position:absolute;width:12px;height:12px;border-radius:50%;
-  background:var(--lime);box-shadow:0 0 0 10px rgba(168,230,61,0.09);
-}
-.who-dot.d1{top:88px;left:76px}
-.who-dot.d2{top:116px;right:88px}
-.who-dot.d3{bottom:118px;left:102px}
-.who-dot.d4{bottom:96px;right:82px}
-.who-card{
-  position:relative;z-index:1;max-width:280px;margin:96px auto 0;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
-  border-radius:28px;padding:22px 20px;backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-}
-.who-card-top{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin-bottom:18px;
-}
-.who-pill{
-  display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);
-  font-size:11px;color:rgba(255,255,255,0.7);
-}
-.who-pill::before{
-  content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);
-}
-.who-status{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
-.who-title{font-size:28px;line-height:1.04;letter-spacing:-.05em;color:var(--white);margin-bottom:10px}
-.who-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.6);margin-bottom:18px}
-.who-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.who-stat{
-  padding:14px 12px;border-radius:18px;background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.06);
-}
-.who-stat strong{display:block;font-size:18px;color:var(--white);margin-bottom:4px}
-.who-stat span{font-size:11px;line-height:1.5;color:rgba(255,255,255,0.48)}
-.who-floating{
-  position:absolute;z-index:1;display:flex;align-items:center;gap:10px;
-  padding:12px 14px;border-radius:18px;background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.who-floating.f1{top:58px;right:24px}
-.who-floating.f2{bottom:32px;left:24px}
-
-.who-floating-t{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px}
-.who-floating-d{font-size:11px;color:rgba(255,255,255,0.5)}
-
-/* ── FOUNDERS ── */
-#founders{background:var(--surf)}
-.founders-head{max-width:560px;margin:0 auto;text-align:center}
-.founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.f-card{
-  background:var(--white);border:1px solid var(--bd);
-  border-radius:20px;padding:30px 24px 24px;
-  transition:border-color .2s,transform .2s;
-  text-align:center;
-}
-.f-card:hover{border-color:rgba(168,230,61,0.4);transform:translateY(-3px)}
-.f-av{
-  width:64px;height:64px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;font-weight:700;margin:0 auto 16px;
-  box-shadow:0 0 0 3px var(--lime-t);
-}
-.f-name{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.f-role{font-size:12px;color:var(--lime-d);font-weight:500;margin-bottom:12px}
-.f-line{
-  width:36px;height:1px;background:rgba(168,230,61,0.4);
-  margin:0 auto 14px;
-}
-.f-bio{
-  font-size:13px;color:var(--sub);line-height:1.75;
-  margin:0 auto 18px;max-width:28ch;
-}
-.f-socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.f-soc{
-  display:flex;align-items:center;gap:5px;
-  font-size:11px;color:var(--sub);text-decoration:none;
-  padding:5px 10px;border-radius:8px;border:1px solid var(--bd);
-  transition:border-color .15s,color .15s;
-}
-.f-soc:hover{border-color:rgba(168,230,61,0.4);color:var(--lime-d)}
-.f-soc svg{width:12px;height:12px}
-
-/* ── HOW IT WORKS ── */
-#how{background:var(--white)}
-.steps{display:flex;gap:0;margin-top:56px;position:relative}
-.steps::before{
-  content:'';position:absolute;top:28px;left:56px;right:56px;height:1px;
-  background:linear-gradient(90deg,var(--lime),rgba(168,230,61,0.15));z-index:0;
-}
-.step{flex:1;text-align:center;position:relative;z-index:1;padding:0 20px}
-.step-c{
-  width:56px;height:56px;border-radius:50%;
-  background:var(--white);border:2px solid var(--lime);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 18px;font-size:14px;font-weight:600;color:var(--lime-d);
-}
-.step-t{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px}
-.step-d{font-size:13px;color:var(--sub);line-height:1.6}
-
-/* ── WAITLIST ── */
-#waitlist{
-  background:var(--ink);position:relative;overflow:hidden;
-  padding:120px 0;
-}
-.wl-blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;background:rgba(168,230,61,0.08)}
-.wb1{width:500px;height:500px;top:-100px;left:-80px}
-.wb2{width:400px;height:400px;bottom:-80px;right:-60px}
-.wl-inner{
-  max-width:600px;margin:0 auto;text-align:center;
-  position:relative;z-index:1;padding:0 6%;
-}
-.wl-tag{
-  display:inline-block;background:rgba(168,230,61,0.15);
-  border:1px solid rgba(168,230,61,0.3);border-radius:20px;
-  padding:5px 16px;font-size:12px;font-weight:500;color:var(--lime);
-  margin-bottom:28px;
-}
-#waitlist h2{
-  font-size:clamp(30px,4.5vw,52px);font-weight:700;
-  letter-spacing:-.035em;line-height:1.1;color:var(--white);
-  margin-bottom:16px;
-}
-#waitlist p{
-  font-size:15px;color:rgba(255,255,255,0.45);
-  line-height:1.65;font-weight:300;margin-bottom:36px;
-}
-.wl-form{display:flex;gap:10px;max-width:460px;margin:0 auto}
-.wl-input{
-  flex:1;height:50px;border-radius:12px;
-  border:1px solid rgba(255,255,255,0.1);
-  background:rgba(255,255,255,0.07);
-  padding:0 18px;font-family:'DM Sans',sans-serif;
-  font-size:14px;color:var(--white);outline:none;
-  transition:border-color .2s;
-}
-
-.wl-btn{
-  align-items: center;display:inline-flex;gap:6px; justify-content: center; width: 100%;
-  height:50px;padding:0 28px;border-radius:12px;
-  background:var(--lime);border:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;font-size:14px;
-  font-weight:600;color:var(--lime-d);white-space:nowrap;
-  transition:background .15s,transform .15s;
-}
-.wl-btn:hover{background:var(--lime-h);transform:translateY(-1px)}
-.wl-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:14px}
-.spots{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(168,230,61,0.1);border:1px solid rgba(168,230,61,0.2);
-  border-radius:20px;padding:5px 14px;
-  font-size:12px;color:var(--lime);font-weight:500;
-  margin-bottom:24px;
-}
-.s-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
-
-/* ── FAQ ── */
-#faq{background:var(--surf)}
-.faq-list{max-width:680px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{
-  background:var(--white);border:1px solid var(--bd);
-  border-radius:14px;overflow:hidden;
-}
-.faq-q{
-  width:100%;text-align:left;padding:18px 20px;
-  background:none;border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:space-between;
-  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;
-  color:var(--ink);gap:12px;transition:color .15s;
-}
-.faq-q:hover{color:var(--lime-d)}
-.faq-ic{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--lime-t);display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;transition:transform .25s;
-}
-.faq-ic svg{width:10px;height:10px;color:var(--lime-d)}
-.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--lime)}
-.faq-item.open .faq-ic svg{color:var(--lime-d)}
-.faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height .3s ease,padding .3s ease;
-}
-.faq-item.open .faq-a{max-height:200px}
-.faq-a-inner{padding:0 20px 18px;font-size:13px;color:var(--sub);line-height:1.7}
-
-/* ── FOOTER ── */
-footer{
-  background:var(--white);border-top:1px solid var(--bd);
-  padding:32px 0;
-}
-.foot-inner{
-  max-width:1080px;margin:0 auto;padding:0 6%;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:16px;
-}
-.foot-logo{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.03em;text-decoration:none}
-.foot-logo span{color:var(--lime-d)}
-.foot-links{display:flex;gap:20px;flex-wrap:wrap}
-.foot-links a{font-size:12px;color:var(--sub);text-decoration:none;transition:color .15s}
-.foot-links a:hover{color:var(--ink)}
-.foot-r{font-size:12px;color:#ccc}
-
-@media(max-width:768px){
-  .nav-links{display:none}
-  .prob-grid,.inside-grid,.founders-grid{grid-template-columns:1fr}
-  .who-grid{grid-template-columns:1fr}
-  .who-stage{min-height:420px;padding:22px}
-  .who-card{margin:98px auto 0;max-width:100%}
-  .who-floating.f1{top:24px;right:16px}
-  .who-floating.f2{bottom: 1100px;left:16px}
-  .who-orb.o1{width:280px;height:280px;top:84px}
-  .who-orb.o2{width:200px;height:200px;top:124px}
-  .vision-top{grid-template-columns:1fr;gap:16px}
-  .vision-kicker{justify-self:start;padding-bottom:0}
-  .vision-stage{min-height:auto}
-  .vision-sticky{
-    position:relative;top:auto;min-height:auto;
-    grid-template-columns:1fr;gap:28px;
-  }
-  .vision-column{order:2}
-  .vision-column:first-child .vision-step:nth-child(2),
-  .vision-column:last-child .vision-step:nth-child(2){margin-left:0;margin-right:0}
-  .vision-column:last-child{padding-top:18px}
-  .vision-orbit{order:1;position:relative;top:auto;min-height:440px}
-  .vision-step{opacity:1;transform:none}
-  .vision-phone{min-height:420px}
-  .steps{flex-direction:column;gap:32px}
-  .steps::before{display:none}
-  .wl-form{flex-direction:column}
-  .free-box{padding:36px 24px}
-}
-</style>
-<script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<title>pipeup — one stop solution for creators</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v2.css">
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">pipe<span>up</span></a>
-    <div class="nav-links">
-      <a href="#inside">community</a>
-      <a href="#vision">vision</a>
-      <a href="#founders">founders</a>
-    </div>
-    <a href="#waitlist" class="nav-btn">join free →</a>
+  <a href="#" class="nav-logo">pipe<em>up</em></a>
+  <div class="nav-links">
+    <a href="#problem">the problem</a>
+    <a href="#solve">what we do</a>
+    <a href="#how">how it works</a>
+  </div>
+  <div class="nav-actions">
+    <a href="CREATOR_FORM_LINK" target="_blank" class="btn btn-ghost btn-sm">i'm a creator</a>
+    <a href="brand.html" target="_blank" class="btn btn-lime btn-sm">i'm a brand</a>
   </div>
 </nav>
-
-<!-- ── 01 HERO ── -->
-<section id="hero">
-  <div class="blob b1 parallax" data-speed="0.18"></div>
-  <div class="blob b2 parallax" data-speed="-0.14"></div>
-  <div class="blob b3 parallax" data-speed="0.1"></div>
-
+<section class="hero" id="home">
+  <div class="hero-mesh">
+    <div class="mesh-orb mo1"></div>
+    <div class="mesh-orb mo2"></div>
+    <div class="mesh-orb mo3"></div>
+  </div>
   <div class="hero-inner">
-    <div class="eyebrow"><span class="pulse"></span>building India's first free creator community</div>
-
-    <h1>be one of<br>the <span class="ul">first 500</span></h1>
-
-    <p class="hero-sub">
-      we're building a free community where every student creator in India can land brand deals, learn, and grow — together. get in early. help shape it.
-    </p>
-
-    <div class="hero-cta">
-      <a href="#waitlist" class="btn-main">
-        join the community
-        <span class="arr-ic">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </a>
-      <div class="note">
-        <svg viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.8l1 3.7L6 8.5l-3.5 2 1-3.7L1 4.5h3.5z" fill="currentColor"/></svg>
-        no fees. no paywalls. forever free.
-      </div>
-    </div>
-
-    <div class="strip-lbl">student creators joining the waitlist</div>
-    <div class="rail-outer">
-      <div class="rail">
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEF3C7;color:#92400E">आ</div><div class="ldot"></div></div><div class="cn">Aarav Sharma</div><div class="ch">@aarav.creates</div><div class="cn2">tech & gadgets</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FCE7F3;color:#9D174D">प</div></div><div class="cn">Priya Nair</div><div class="ch">@priyacreates</div><div class="cn2">lifestyle</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#EDE9FE;color:#5B21B6">र</div><div class="ldot"></div></div><div class="cn">Rohan Mehta</div><div class="ch">@rohantalks</div><div class="cn2">finance & career</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#D1FAE5;color:#065F46">अ</div></div><div class="cn">Ananya Pillai</div><div class="ch">@ananyavibes</div><div class="cn2">study & motivation</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEE2E2;color:#991B1B">क</div><div class="ldot"></div></div><div class="cn">Kabir Singh</div><div class="ch">@kabirshots</div><div class="cn2">photography</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEF3C7;color:#78350F">स</div></div><div class="cn">Sneha Reddy</div><div class="ch">@snehacooks</div><div class="cn2">food & culture</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#DBEAFE;color:#1E40AF">वि</div><div class="ldot"></div></div><div class="cn">Vikram Das</div><div class="ch">@vikramcodes</div><div class="cn2">coding & dev</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FDF4FF;color:#7E22CE">दि</div></div><div class="cn">Divya Iyer</div><div class="ch">@divyafit</div><div class="cn2">fitness</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#ECFDF5;color:#065F46">नि</div><div class="ldot"></div></div><div class="cn">Nikhil Joshi</div><div class="ch">@nikhilplays</div><div class="cn2">gaming</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FFF7ED;color:#9A3412">मे</div></div><div class="cn">Meera Kapoor</div><div class="ch">@meerasings</div><div class="cn2">music & arts</div></div>
-        <!-- duplicate for loop -->
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEF3C7;color:#92400E">आ</div><div class="ldot"></div></div><div class="cn">Aarav Sharma</div><div class="ch">@aarav.creates</div><div class="cn2">tech & gadgets</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FCE7F3;color:#9D174D">प</div></div><div class="cn">Priya Nair</div><div class="ch">@priyacreates</div><div class="cn2">lifestyle</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#EDE9FE;color:#5B21B6">र</div><div class="ldot"></div></div><div class="cn">Rohan Mehta</div><div class="ch">@rohantalks</div><div class="cn2">finance & career</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#D1FAE5;color:#065F46">अ</div></div><div class="cn">Ananya Pillai</div><div class="ch">@ananyavibes</div><div class="cn2">study & motivation</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEE2E2;color:#991B1B">क</div><div class="ldot"></div></div><div class="cn">Kabir Singh</div><div class="ch">@kabirshots</div><div class="cn2">photography</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FEF3C7;color:#78350F">स</div></div><div class="cn">Sneha Reddy</div><div class="ch">@snehacooks</div><div class="cn2">food & culture</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#DBEAFE;color:#1E40AF">वि</div><div class="ldot"></div></div><div class="cn">Vikram Das</div><div class="ch">@vikramcodes</div><div class="cn2">coding & dev</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FDF4FF;color:#7E22CE">दि</div></div><div class="cn">Divya Iyer</div><div class="ch">@divyafit</div><div class="cn2">fitness</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#ECFDF5;color:#065F46">नि</div><div class="ldot"></div></div><div class="cn">Nikhil Joshi</div><div class="ch">@nikhilplays</div><div class="cn2">gaming</div></div>
-        <div class="ccard"><div class="av-w"><div class="av" style="background:#FFF7ED;color:#9A3412">मे</div></div><div class="cn">Meera Kapoor</div><div class="ch">@meerasings</div><div class="cn2">music & arts</div></div>
+    <div class="hero-left">
+      <div class="hero-eyebrow"><span class="badge-dot"></span>building India's biggest creator community</div>
+      <h1 class="hero-h1">be one of
+<br>the <span class="italic-word">first 500</span></h1>
+      <p class="hero-sub">we're building a free community where every student creator in India can land brand deals, learn, and grow — together. get in early. help shape it.</p>
+      <div class="hero-ctas">
+        <a href="CREATOR_FORM_LINK" target="_blank" class="btn btn-lime btn-lg">i'm a creator <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="brand.html" target="_blank" class="btn btn-ink btn-lg">i'm a brand <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
-  <div class="hero-fade"></div>
 </section>
-
-<!-- ── 02 PROBLEM ── -->
-<section id="problem">
-  <div class="container reveal">
-    <div class="s-eye">the problem</div>
-    <h2 class="s-h">we felt it too.<br>so we're fixing it.</h2>
-    <div class="prob-grid">
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item"><span class="m-dot"></span>brand deals</div>
+    <div class="m-item"><span class="m-dot"></span>creator collabs</div>
+    <div class="m-item"><span class="m-dot"></span>get matched with brands</div>
+    <div class="m-item"><span class="m-dot"></span>grow your audience</div>
+    <div class="m-item"><span class="m-dot"></span>real opportunities</div>
+    <div class="m-item"><span class="m-dot"></span>zero gatekeeping</div>
+    <div class="m-item"><span class="m-dot"></span>community-first</div>
+    <div class="m-item"><span class="m-dot"></span>whatsapp group access</div>
+    <div class="m-item"><span class="m-dot"></span>brand deals</div>
+    <div class="m-item"><span class="m-dot"></span>creator collabs</div>
+    <div class="m-item"><span class="m-dot"></span>get matched with brands</div>
+    <div class="m-item"><span class="m-dot"></span>grow your audience</div>
+    <div class="m-item"><span class="m-dot"></span>real opportunities</div>
+    <div class="m-item"><span class="m-dot"></span>zero gatekeeping</div>
+    <div class="m-item"><span class="m-dot"></span>community-first</div>
+    <div class="m-item"><span class="m-dot"></span>whatsapp group access</div>
+  </div>
+</div>
+<section class="problem-section" id="problem">
+  <div class="si">
+    <div class="problem-header reveal">
+      <div class="s-eye">the hard truth</div>
+      <h2 class="s-ttl">making it as a creator<br>is <span class="serif">genuinely hard</span></h2>
+      <p class="s-sub">you create. you post. you refresh. and nothing happens. sound familiar?</p>
+    </div>
+    <div class="struggle-grid">
+      <div class="struggle-card reveal d1">
+        <div class="struggle-visual">
+          <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="160" rx="120" ry="50" fill="rgba(168,230,61,.04)"/>
+            <rect x="120" y="30" width="80" height="130" rx="10" fill="#1a1a2e" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="126" y="40" width="68" height="100" rx="6" fill="#0d0d1a"/>
+            <rect x="128" y="42" width="64" height="48" rx="3" fill="rgba(168,230,61,.07)"/>
+            <circle cx="135" cy="48" r="4" fill="rgba(255,255,255,.15)"/>
+            <rect x="143" y="46" width="28" height="2" rx="1" fill="rgba(255,255,255,.2)"/>
+            <rect x="143" y="50" width="20" height="1.5" rx="1" fill="rgba(255,255,255,.1)"/>
+            <rect x="128" y="54" width="64" height="34" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+            <text x="160" y="76" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="18" fill="rgba(255,255,255,.15)">📸</text>
+            <text x="132" y="102" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">♡ 3 likes</text>
+            <rect x="128" y="106" width="40" height="1.5" rx="1" fill="rgba(255,255,255,.08)"/>
+            <rect x="128" y="110" width="30" height="1.5" rx="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="126" y="128" width="68" height="8" rx="3" fill="rgba(255,255,255,.04)"/>
+            <ellipse cx="160" cy="192" rx="28" ry="6" fill="rgba(0,0,0,.4)"/>
+            <path d="M148 180 Q155 172 160 165 Q165 172 172 180" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="160" cy="162" r="8" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <circle cx="157" cy="161" r="1" fill="rgba(255,255,255,.4)"/>
+            <circle cx="163" cy="161" r="1" fill="rgba(255,255,255,.4)"/>
+            <path d="M156 165 Q160 163 164 165" stroke="rgba(255,255,255,.25)" stroke-width=".8" fill="none" stroke-linecap="round"/>
+            <circle cx="188" cy="55" r="9" fill="rgba(168,230,61,.15)" stroke="rgba(168,230,61,.3)" stroke-width="1"/>
+            <text x="188" y="58.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" font-weight="600" fill="rgba(168,230,61,.8)">3</text>
+          </svg>
+        </div>
+        <div class="struggle-emotion">relatable?</div>
+        <div class="struggle-body">
+          <div class="struggle-label">the grind</div>
+          <div class="struggle-ttl">you post. nobody sees it.</div>
+          <div class="struggle-bdy">hours on a reel, perfect caption, 11pm posting time — 3 likes. two from family.</div>
+        </div>
+        <div class="struggle-overlay">
+          <div class="struggle-overlay-emoji">😶</div>
+          <div class="struggle-overlay-text">"i spent 6 hours editing that reel. got 3 likes. one was my mom and one was mine by accident."</div>
+        </div>
+      </div>
+      <div class="struggle-card reveal d2">
+        <div class="struggle-visual">
+          <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="160" rx="120" ry="50" fill="rgba(168,230,61,.03)"/>
+            <rect x="60" y="25" width="200" height="140" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+            <rect x="68" y="33" width="100" height="12" rx="4" fill="rgba(255,255,255,.06)"/>
+            <rect x="68" y="33" width="55" height="12" rx="4" fill="rgba(255,255,255,.1)"/>
+            <text x="96" y="42.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.35)">Inbox (0 replies)</text>
+            <rect x="68" y="52" width="184" height="22" rx="6" fill="rgba(255,100,100,.08)" stroke="rgba(255,100,100,.15)" stroke-width=".5"/>
+            <text x="80" y="64" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,120,120,.7)">Brand A: "not the right fit..."</text>
+            <rect x="68" y="80" width="184" height="22" rx="6" fill="rgba(255,100,100,.08)" stroke="rgba(255,100,100,.15)" stroke-width=".5"/>
+            <text x="80" y="92" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,120,120,.7)">Brand B: "we're pausing collabs"</text>
+            <rect x="68" y="108" width="184" height="22" rx="6" fill="rgba(255,100,100,.08)" stroke="rgba(255,100,100,.15)" stroke-width=".5"/>
+            <text x="80" y="120" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,120,120,.7)">Brand C: "maybe next quarter"</text>
+            <rect x="68" y="136" width="184" height="18" rx="6" fill="rgba(255,100,100,.06)" stroke="rgba(255,100,100,.1)" stroke-width=".5"/>
+            <text x="80" y="148" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,100,100,.5)">Brand D: (seen, no reply)</text>
+            <text x="242" y="65" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
+            <text x="242" y="93" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
+            <text x="242" y="121" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
+          </svg>
+        </div>
+        <div class="struggle-emotion">the rejection loop</div>
+        <div class="struggle-body">
+          <div class="struggle-label">the gatekeeping</div>
+          <div class="struggle-ttl">"maybe next quarter."</div>
+          <div class="struggle-bdy">you pitch brands. they ghost or pass without clear feedback. the bar keeps moving.</div>
+        </div>
+        <div class="struggle-overlay">
+          <div class="struggle-overlay-emoji">🥲</div>
+          <div class="struggle-overlay-text">"i sent 40 cold DMs. got 2 replies. both said 'not right now'. i was ready. they just didn't care."</div>
+        </div>
+      </div>
+      <div class="struggle-card reveal d3">
+        <div class="struggle-visual">
+          <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="170" rx="110" ry="40" fill="rgba(168,230,61,.03)"/>
+            <rect x="70" y="148" width="180" height="6" rx="3" fill="rgba(255,255,255,.08)"/>
+            <rect x="110" y="108" width="100" height="38" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="116" y="113" width="88" height="28" rx="3" fill="rgba(0,0,0,.4)"/>
+            <rect x="118" y="115" width="40" height="3" rx="1" fill="rgba(255,255,255,.08)"/>
+            <polyline points="118,138 130,137 142,138 154,137 165,138 178,137 190,138 202,137" stroke="rgba(168,230,61,.2)" stroke-width="1" fill="none"/>
+            <circle cx="160" cy="98" r="10" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <circle cx="156.5" cy="96" r="1.2" fill="rgba(255,255,255,.35)"/>
+            <circle cx="163.5" cy="96" r="1.2" fill="rgba(255,255,255,.35)"/>
+            <path d="M156 101 Q160 99 164 101" stroke="rgba(255,255,255,.2)" stroke-width=".8" fill="none" stroke-linecap="round"/>
+            <path d="M152 148 Q154 132 156 122 Q160 118 164 122 Q166 132 168 148" stroke="rgba(255,255,255,.1)" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M152 135 L132 140" stroke="rgba(255,255,255,.1)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M168 135 L188 140" stroke="rgba(255,255,255,.1)" stroke-width="2" stroke-linecap="round"/>
+            <text x="98" y="68" font-family="DM Sans,sans-serif" font-size="14" fill="rgba(255,255,255,.08)">?</text>
+            <text x="205" y="75" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(255,255,255,.06)">?</text>
+            <text x="195" y="55" font-family="DM Sans,sans-serif" font-size="18" fill="rgba(255,255,255,.05)">?</text>
+            <circle cx="80" cy="70" r="12" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="80" cy="70" r="6" fill="rgba(255,255,255,.04)"/>
+            <circle cx="240" cy="65" r="10" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="240" cy="65" r="5" fill="rgba(255,255,255,.04)"/>
+          </svg>
+        </div>
+        <div class="struggle-emotion">you're not alone</div>
+        <div class="struggle-body">
+          <div class="struggle-label">the isolation</div>
+          <div class="struggle-ttl">figuring it out alone, at 2am.</div>
+          <div class="struggle-bdy">no one to ask. no feedback. no collab partners. just you, your notes app, and hope.</div>
+        </div>
+        <div class="struggle-overlay">
+          <div class="struggle-overlay-emoji">😮‍💨</div>
+          <div class="struggle-overlay-text">"i've been creating for a year and still don't know if i'm doing it right. i just needed someone who actually gets it."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="exaggerate-section" id="exaggerate">
+  <div class="ex-inner">
+    <div class="ex-statement">
+      <span class="ex-line">you&rsquo;re not the <span class="hl">problem</span> &mdash;</span>
+      <span class="ex-line">you&rsquo;re just stuck in a system that <span class="serif">ignores you</span>.</span>
+      <span class="ex-gap"></span>
+      <span class="ex-line">but your content is <span class="hl">good</span>.</span>
+      <span class="ex-line">you just need <span class="serif">access</span>.</span>
+      <span class="ex-gap"></span>
+      <span class="ex-line"><span class="hl">pipeup</span> gives you that.</span>
+    </div>
+  </div>
+</section>
+<section class="solve-section reveal" id="solve">
+  <div class="si">
+    <div class="solve-intro">
       <div>
-        <p class="prob-quote">
-          "there was <em>no real place</em> for student creators in India to learn, grow, and get brand deals — without paying ₹10,000 for a course."
-        </p>
-        <p style="font-size:14px;color:var(--sub);margin-top:20px;line-height:1.65">we were those students. figuring it out alone, with no community, no mentors, no brand connections. pipeup is what we needed back then.</p>
+        <div class="s-eye">how we fix it</div>
+        <h2 class="s-ttl">pipeup is the <span class="serif">unfair advantage</span><br>you've been missing</h2>
+        <p class="s-sub" style="margin-bottom:0">we take the rejection, the guesswork, and the loneliness out of being a creator — and replace it with real connections, real deals, and a community that moves with you.</p>
       </div>
-      <div class="prob-items">
-        <div class="prob-item">
-          <div class="prob-icon">🎓</div>
-          <div><div class="prob-t">knowledge is paywalled</div><div class="prob-d">creator courses cost thousands. most students can't afford it.</div></div>
-        </div>
-        <div class="prob-item">
-          <div class="prob-icon">🤝</div>
-          <div><div class="prob-t">brand deals feel impossible</div><div class="prob-d">no connections, no managers, no idea where to even start.</div></div>
-        </div>
-        <div class="prob-item">
-          <div class="prob-icon">🌐</div>
-          <div><div class="prob-t">no Indian creator community</div><div class="prob-d">every platform is western. nothing built for students like us.</div></div>
-        </div>
+    </div>
+    <div class="solve-cards">
+      <div class="solve-card reveal d1">
+        <div class="solve-num">01</div>
+        <div class="solve-ttl">land real brand deals</div>
+        <div class="solve-bdy">we match you with brands that actually want to work with creators at your stage. no cold DMs, no endless pitching.</div>
+      </div>
+      <div class="solve-card reveal d2">
+        <div class="solve-num">02</div>
+        <div class="solve-ttl">collab with creators who get it</div>
+        <div class="solve-bdy">find your people. co-create content, grow each other's audiences, and finally have a community that actually helps you move forward.</div>
+      </div>
+      <div class="solve-card reveal d1">
+        <div class="solve-num">03</div>
+        <div class="solve-ttl">zero gatekeeping, zero bullshit</div>
+        <div class="solve-bdy">no application review. no vague hoops. if you create, you belong here. period.</div>
+      </div>
+      <div class="solve-card reveal d2">
+        <div class="solve-num">04</div>
+        <div class="solve-ttl">workshops from people who've done it</div>
+        <div class="solve-bdy">hands-on sessions on content strategy, growth, brand deals — from creators who've been exactly where you are.</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ── 03 VISION ── -->
-<section id="vision">
-  <div class="v-blob vb1"></div>
-  <div class="v-blob vb2"></div>
-  <div class="container reveal vision-shell">
-    <div class="vision-top">
-      <div class="section-head">
-        <div class="s-eye">the vision</div>
-        <h2 class="s-h">six building blocks.<br>one calm creator stack.</h2>
+<section class="how-section" id="how">
+  <div class="si">
+    <div class="s-eye">how it works</div>
+    <h2 class="s-ttl">three steps.<br><span class="serif">that's all.</span></h2>
+    <div class="steps-row">
+      <div class="step-item reveal d1">
+        <div class="step-arrow">→</div>
+        <div class="step-num">1</div>
+        <div class="step-ttl">fill the form</div>
+        <div class="step-bdy">quick 2-min onboarding. tell us what you create, your platform, and what you're looking for.</div>
       </div>
-    </div>
-    <div class="vision-stage">
-      <div class="vision-sticky">
-        <div class="vision-column">
-          <article class="vision-step is-active" data-feature="community">
-            <div class="vision-step-head">
-              <div class="v-num">01</div>
-              <div class="v-label live"><span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block"></span>building now</div>
-            </div>
-            <div class="v-t">creator community</div>
-            <div class="v-d">A steady place to learn, ask better questions, share wins, and grow with creators who are at the same stage.</div>
-          </article>
-          <article class="vision-step" data-feature="marketplace">
-            <div class="vision-step-head">
-              <div class="v-num">03</div>
-              <div class="v-label soon">launching soon</div>
-            </div>
-            <div class="v-t">brand deal marketplace</div>
-            <div class="v-d">Direct access to student-friendly briefs, clearer expectations, and a smoother path from profile to paid collaboration.</div>
-          </article>
-          <article class="vision-step" data-feature="workshops">
-            <div class="vision-step-head">
-              <div class="v-num">05</div>
-              <div class="v-label soon">launching soon</div>
-            </div>
-            <div class="v-t">live workshops</div>
-            <div class="v-d">Short practical sessions on content, pitching, editing, and growth so learning feels useful, not noisy.</div>
-          </article>
-        </div>
-        <div class="vision-orbit">
-          <div class="vision-phone">
-            <div class="vision-phone-top">
-              <div class="vision-pill"><span class="vision-pill-dot"></span>pipeup vision</div>
-              <div class="vision-status">scroll state</div>
-            </div>
-            <div class="vision-screen">
-              <div class="vision-screen-card">
-                <div class="vision-screen-label">active focus</div>
-                <div class="vision-screen-title" id="vision-screen-title">Creator community</div>
-                <div class="vision-screen-desc" id="vision-screen-desc">A free student-first space to learn, collaborate, and move with more clarity.</div>
-              </div>
-              <div class="vision-mini-grid">
-                <div class="vision-mini">
-                  <strong id="vision-mini-metric">500+</strong>
-                  <span id="vision-mini-label">founding creators in the first batch</span>
-                </div>
-                <div class="vision-mini">
-                  <strong id="vision-mini-status">Live</strong>
-                  <span id="vision-mini-caption">the part of the stack moving right now</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="vision-column">
-          <article class="vision-step" data-feature="portfolio">
-            <div class="vision-step-head">
-              <div class="v-num">02</div>
-              <div class="v-label beta">in beta</div>
-            </div>
-            <div class="v-t">creator portfolio builder</div>
-            <div class="v-d">A clean media kit with your niche, proof points, and best work so introductions feel sharper and more credible.</div>
-          </article>
-          <article class="vision-step" data-feature="matchmaking">
-            <div class="vision-step-head">
-              <div class="v-num">04</div>
-              <div class="v-label soon">coming soon</div>
-            </div>
-            <div class="v-t">collab matchmaking</div>
-            <div class="v-d">Better discovery for creators in your city, niche, or college so collaborations happen faster and feel more relevant.</div>
-          </article>
-          <article class="vision-step" data-feature="app">
-            <div class="vision-step-head">
-              <div class="v-num">06</div>
-              <div class="v-label soon">coming soon</div>
-            </div>
-            <div class="v-t">pipeup app</div>
-            <div class="v-d">The mobile layer that ties everything together so opportunities, people, and learning stay within reach.</div>
-          </article>
-        </div>
+      <div class="step-item reveal d2">
+        <div class="step-arrow">→</div>
+        <div class="step-num">2</div>
+        <div class="step-ttl">join the whatsapp group</div>
+        <div class="step-bdy">after filling the form, you get redirected straight to our whatsapp group — where brand opps, collabs, and drops happen.</div>
+        <div class="step-wa"><span class="wa-dot"></span>redirected right after form</div>
+      </div>
+      <div class="step-item reveal d3">
+        <div class="step-num">3</div>
+        <div class="step-ttl">get matched &amp; create</div>
+        <div class="step-bdy">we handle brand intros. you focus on making content. your first deal might land faster than you think.</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ── 04 INSIDE ── -->
-<section id="inside">
-  <div class="container reveal">
-    <div class="section-head inside-head">
-      <div class="s-eye inside-text">what's inside</div>
-      <h2 class="s-h inside-text">what happens when<br>you join</h2>
-      <p class="s-sub inside-text">A simple first layer: access, learning, collaborators, and a clearer path to being taken seriously.</p>
+<section class="dark-section reveal">
+  <div class="dark-inner">
+    <div>
+      <div class="s-eye" style="color:rgba(168,230,61,.75)">why now</div>
+      <div class="dark-s-ttl">we're building this <span class="serif">with</span> creators,<br>not for them.</div>
+      <p class="dark-s-sub">no inflated numbers. no fake stats. we're early — and that means you get to help shape what pipeup becomes.</p>
     </div>
-    <div class="inside-grid">
-      <div class="in-card">
-        <span class="in-icon">🚀</span>
-        <div class="in-t">unlock your first brand deal</div>
-        <div class="in-d">we match you with student-friendly brands the moment the marketplace goes live. you'll be first in line.</div>
-        <div class="in-tag"><span class="tag">early access</span></div>
+    <div class="feature-pills">
+      <div class="fpill"><div class="fpill-icon"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" stroke="#A8E63D" stroke-width="1.4"/><path d="M4.5 7l1.8 1.8L9.5 5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>free for creators — right now</div>
+      <div class="fpill"><div class="fpill-icon"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" stroke="#A8E63D" stroke-width="1.4"/><path d="M4.5 7l1.8 1.8L9.5 5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>real brand deals, not just "exposure"</div>
+      <div class="fpill"><div class="fpill-icon"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" stroke="#A8E63D" stroke-width="1.4"/><path d="M4.5 7l1.8 1.8L9.5 5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>whatsapp-first, low friction community</div>
+      <div class="fpill"><div class="fpill-icon"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" stroke="#A8E63D" stroke-width="1.4"/><path d="M4.5 7l1.8 1.8L9.5 5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>you help shape what we become next</div>
+    </div>
+  </div>
+</section>
+<section class="cta-section reveal" id="join">
+  <div class="cta-bg-orb1"></div>
+  <div class="cta-bg-orb2"></div>
+  <div class="si">
+    <div class="cta-box">
+      <div class="cta-badge">pick your path</div>
+      <h2 class="cta-ttl">your creator journey<br><span class="serif">starts here</span></h2>
+      <p class="cta-sub">one quick form. join the whatsapp group. get matched with brands and creators that actually make sense for you.</p>
+      <div class="cta-btns">
+        <a href="CREATOR_FORM_LINK" target="_blank" class="btn btn-lime btn-lg">i'm a creator <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="brand.html" target="_blank" class="btn btn-ink btn-lg">i'm a brand <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="in-card">
-        <span class="in-icon">🎯</span>
-        <div class="in-t">weekly live workshops</div>
-        <div class="in-d">real creators teaching real skills. instagram growth, video editing, pitching to brands, building an audience from zero.</div>
-        <div class="in-tag"><span class="tag">free forever</span></div>
+      <p class="cta-note">no spam. no hidden fees. just real opportunities.</p>
+    </div>
+  </div>
+</section>
+<section class="creators-strip" aria-label="founders">
+  <div class="creators-label">founders</div>
+  <div class="creators-photos">
+    <div class="creator-card">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=480&q=85" alt="pipeup creator">
+      <div class="creator-socials">
+        <a href="https://www.instagram.com/pipeup.in" target="_blank" rel="noopener" aria-label="instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://www.linkedin.com/company/pipeup-in" target="_blank" rel="noopener" aria-label="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10v8"/><path d="M10.5 18v-8"/><path d="M10.5 13.5c0-2.2 1.3-3.7 3.4-3.7 2 0 3.1 1.3 3.1 3.6V18"/><circle cx="6.5" cy="6.5" r="1.2"/></svg></a>
       </div>
-      <div class="in-card">
-        <span class="in-icon">🤝</span>
-        <div class="in-t">collab with creators like you</div>
-        <div class="in-d">find your people. co-create content, grow each other's audiences, and build something bigger together.</div>
-        <div class="in-tag"><span class="tag">community</span></div>
+    </div>
+    <div class="creator-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&q=85" alt="pipeup creator">
+      <div class="creator-socials">
+        <a href="https://www.instagram.com/pipeup.in" target="_blank" rel="noopener" aria-label="instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://www.linkedin.com/company/pipeup-in" target="_blank" rel="noopener" aria-label="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10v8"/><path d="M10.5 18v-8"/><path d="M10.5 13.5c0-2.2 1.3-3.7 3.4-3.7 2 0 3.1 1.3 3.1 3.6V18"/><circle cx="6.5" cy="6.5" r="1.2"/></svg></a>
       </div>
-      <div class="in-card">
-        <span class="in-icon">📁</span>
-        <div class="in-t">build your creator portfolio</div>
-        <div class="in-d">get feedback on your content, track your growth, and build a portfolio that brands trust — even with zero followers.</div>
-        <div class="in-tag"><span class="tag">coming soon</span></div>
+    </div>
+    <div class="creator-card">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=480&q=85" alt="pipeup creator">
+      <div class="creator-socials">
+        <a href="https://www.instagram.com/pipeup.in" target="_blank" rel="noopener" aria-label="instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://www.linkedin.com/company/pipeup-in" target="_blank" rel="noopener" aria-label="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10v8"/><path d="M10.5 18v-8"/><path d="M10.5 13.5c0-2.2 1.3-3.7 3.4-3.7 2 0 3.1 1.3 3.1 3.6V18"/><circle cx="6.5" cy="6.5" r="1.2"/></svg></a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ── 05 FREE ── -->
-<section id="free">
-  <div class="container reveal">
-    <div class="free-inner">
-      <div class="s-eye" style="text-align:center">why free</div>
-      <h2 class="s-h" style="text-align:center">we're not free<br>because we're broke.</h2>
-      <div class="free-box">
-        <div class="free-blob parallax" data-speed="-0.1"></div>
-        <p>we're free because we believe <em>every student creator deserves a shot</em> — not just the ones who can afford a ₹15,000 course or have the right connections.</p>
-        <p class="sub-note">pipeup will stay free for creators. always. we'll build a sustainable model by connecting brands to you — not by charging you to get there.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 06 NICHES ── -->
-<section id="niches">
-  <div class="container reveal">
-    <div class="who-grid">
-      <div class="who-copy">
-        <div class="s-eye">who it's for</div>
-        <h2 class="s-h">any creator.<br>any follower count.</h2>
-        <p class="s-sub">If you're showing up, learning, and trying to get better, you belong here. Pipeup is for creators at the beginning, in the middle, and still figuring it out.</p>
-
-        <div class="who-points">
-          <div class="who-point reveal">
-            <div class="who-point-num">01</div>
-            <div>
-              <div class="who-point-t">Start before you feel ready</div>
-              <div class="who-point-d">You do not need a big audience, polished content, or brand deals already in hand. The point is to learn in public and grow with people around you.</div>
-            </div>
-          </div>
-          <div class="who-point reveal">
-            <div class="who-point-num">02</div>
-            <div>
-              <div class="who-point-t">Learn from creators at every stage</div>
-              <div class="who-point-d">Beginners get clarity. Growing creators get support. Everyone gets access to practical lessons, better systems, and a more useful community.</div>
-            </div>
-          </div>
-          <div class="who-point reveal">
-            <div class="who-point-num">03</div>
-            <div>
-              <div class="who-point-t">Build real momentum together</div>
-              <div class="who-point-d">This is not just content about growth. It is a place to ask questions, share work, meet collaborators, and keep going when progress feels slow.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="who-badges">
-          <div class="who-badge"><strong>0 followers?</strong> join anyway.</div>
-          <div class="who-badge"><strong>100 followers?</strong> keep learning.</div>
-          <div class="who-badge"><strong>10k+ followers?</strong> still room to grow.</div>
-        </div>
-      </div>
-
-      <div class="who-stage">
-        <div class="who-orb o1"></div>
-        <div class="who-orb o2"></div>
-        <div class="who-dot d1 parallax" data-speed="0.14"></div>
-        <div class="who-dot d2 parallax" data-speed="-0.12"></div>
-        <div class="who-dot d3 parallax" data-speed="0.1"></div>
-        <div class="who-dot d4 parallax" data-speed="-0.16"></div>
-
-        <div class="who-floating f1 parallax" data-speed="-0.08">
-          <div>
-            <div class="who-floating-t">learn faster</div>
-            <div class="who-floating-d">practical support over noise</div>
-          </div>
-        </div>
-
-        <div class="who-card parallax" data-speed="0.07">
-          <div class="who-card-top">
-            <div class="who-pill">open community</div>
-            <div class="who-status">for everyone</div>
-          </div>
-          <div class="who-title">You don't need<br>proof to begin.</div>
-          <div class="who-desc">Bring your curiosity, your early experiments, and your ambition. The community is built to help you improve before the numbers catch up.</div>
-          <div class="who-stats">
-            <div class="who-stat">
-              <strong>learn</strong>
-              <span>skills, systems, and better next steps</span>
-            </div>
-            <div class="who-stat">
-              <strong>share</strong>
-              <span>work in progress without feeling behind</span>
-            </div>
-          </div>
-        </div>
-
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ── 08 FOUNDERS ── -->
-<section id="founders">
-  <div class="container reveal">
-    <div class="founders-head">
-      <div class="s-eye">the founders</div>
-      <h2 class="s-h">built by people who<br>needed this earlier.</h2>
-      <p class="s-sub">No superhero story here. Just three people who saw the same gap and decided to build a cleaner starting point for student creators.</p>
-    </div>
-    <div class="founders-grid">
-      <div class="f-card">
-        <div class="f-av" style="background:#EAF3DE;color:#3B6D11">F1</div>
-        <div class="f-name">Founder One</div>
-        <div class="f-role">co-founder & CEO</div>
-        <div class="f-line"></div>
-        <div class="f-bio">Started creating in college without a playbook. Learned brand conversations through trial, error, and a lot of guesswork. Now focused on making the path clearer for everyone after us.</div>
-        <div class="f-socials">
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            instagram
-          </a>
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            linkedin
-          </a>
-        </div>
-      </div>
-      <div class="f-card">
-        <div class="f-av" style="background:#FEF3C7;color:#92400E">F2</div>
-        <div class="f-name">Founder Two</div>
-        <div class="f-role">co-founder & creative</div>
-        <div class="f-line"></div>
-        <div class="f-bio">Spent years learning content systems from scattered advice, free trials, and repeated experiments. Pipeup turns that messy learning curve into something more generous.</div>
-        <div class="f-socials">
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            instagram
-          </a>
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            linkedin
-          </a>
-        </div>
-      </div>
-      <div class="f-card">
-        <div class="f-av" style="background:#EDE9FE;color:#5B21B6">F3</div>
-        <div class="f-name">Founder Three</div>
-        <div class="f-role">co-founder & growth</div>
-        <div class="f-line"></div>
-        <div class="f-bio">Worked on student communities long enough to see what helps people stay consistent and what makes them drop off. Building with retention, trust, and usefulness in mind.</div>
-        <div class="f-socials">
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            instagram
-          </a>
-          <a href="#" class="f-soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            linkedin
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 09 WAITLIST ── -->
-<section id="waitlist">
-  <div class="wl-blob wb1 parallax" data-speed="0.12"></div>
-  <div class="wl-blob wb2 parallax" data-speed="-0.16"></div>
-  <div class="wl-inner reveal">
-    <div class="spots"><span class="s-dot"></span>only 500 spots in batch 1</div>
-    <div class="wl-tag">free. always.</div>
-    <h2>your creator<br>journey starts here.</h2>
-    <div class="wl-form">
-      <button class="wl-btn">join free →</button>
-    </div>
-    <div class="wl-note">no spam. no cost. ever. 🤙</div>
-  </div>
-</section>
-
-<!-- ── 10 FAQ ── -->
-<section id="faq">
-  <div class="container reveal">
-    <div class="s-eye" style="text-align:center">faq</div>
-    <h2 class="s-h" style="text-align:center">honest answers.</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="tog(this)">
-          is it really free? what's the catch?
-          <div class="faq-ic"><svg viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">completely free for creators. always. we'll build a sustainable business by connecting brands to creators — not by charging you. your growth funds itself.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="tog(this)">
-          you said you're building from scratch. why should I join now?
-          <div class="faq-ic"><svg viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">the first 500 get to shape everything — what we build, how it works, which brands we onboard first. you're not a user, you're a co-builder. that's a different kind of opportunity.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="tog(this)">
-          who is pipeup for?
-          <div class="faq-ic"><svg viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">student creators in India — anyone in college or just out of it, creating content in any niche. tech, food, fashion, gaming, study, music, fitness — if you make content, you belong here.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="tog(this)">
-          how will brand deals work?
-          <div class="faq-ic"><svg viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">we're building a marketplace where student-friendly brands (edtech, college brands, gen-Z startups) post deals. you apply, we facilitate, you get paid. early members get first access when it launches.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="tog(this)">
-          when does it launch?
-          <div class="faq-ic"><svg viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">we're in active development. the community opens to the first 500 very soon. join the waitlist and you'll be among the first to know — with a personal invite from us.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="foot-inner">
-    <a href="#" class="foot-logo">pipe<span>up</span>.in</a>
-    <div class="foot-links">
-      <a href="#inside">community</a>
-      <a href="#vision">vision</a>
-      <a href="#founders">founders</a>
-      <a href="#faq">faq</a>
-
-    </div>
-    <div class="foot-r">© 2026 pipeup</div>
+  <div class="footer-logo">pipe<em>up</em>.in</div>
+  <div class="footer-links">
+    <a href="#">terms and conditions</a><a href="#">contact</a><a href="https://www.instagram.com/pipeup.in" target="_blank" rel="noopener">instagram</a><a href="https://www.linkedin.com/company/pipeup-in" target="_blank" rel="noopener">linkedin</a>
   </div>
+  <div class="footer-copy">© 2026 pipeup</div>
 </footer>
-
 <script>
-  function tog(btn){
-    const item = btn.closest('.faq-item')
-    const isOpen = item.classList.contains('open')
-    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'))
-    if(!isOpen) item.classList.add('open')
-  }
-
-  const hasMotionLibs = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof Lenis !== 'undefined'
-
-  if (!hasMotionLibs) {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'))
-  } else {
-    gsap.registerPlugin(ScrollTrigger)
-
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true
-    })
-
-    lenis.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
-    gsap.ticker.lagSmoothing(0)
-
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis')}})
-    },{threshold:0.12})
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
-
-    gsap.utils.toArray('.parallax').forEach((el) => {
-      const speed = Number(el.dataset.speed || 0.12)
-      gsap.to(el, {
-        yPercent: speed * 100,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el.closest('section') || el,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      })
-    })
-
-    document.querySelectorAll('.inside-text').forEach((element) => {
-      const html = element.innerHTML.replace(/<br\s*\/?>/gi, ' <span class="split-break"></span> ')
-      const words = html.split(/\s+/).filter(Boolean)
-      element.innerHTML = words.map((word) => {
-        if (word.includes('split-break')) return '<br>'
-        return `<span class="split-parent"><span class="split-word">${word}</span></span>`
-      }).join(' ')
-
-      gsap.to(element.querySelectorAll('.split-word'), {
-        y: '0%',
-        opacity: 1,
-        ease: 'power3.out',
-        stagger: 0.04,
-        duration: 0.85,
-        scrollTrigger: {
-          trigger: '#inside',
-          start: 'top 68%'
-        }
-      })
-    })
-
-    const featureContent = {
-      community: {
-        title: 'Creator community',
-        desc: 'A free student-first space to learn, collaborate, and move with more clarity.',
-        metric: '500+',
-        label: 'founding creators in the first batch',
-        status: 'Live',
-        caption: 'the part of the stack moving right now'
-      },
-      marketplace: {
-        title: 'Brand marketplace',
-        desc: 'A calmer route from creator profile to paid brief, built for student-friendly brand work.',
-        metric: 'Direct',
-        label: 'access to relevant briefs and intros',
-        status: 'Soon',
-        caption: 'the next revenue layer in the flow'
-      },
-      workshops: {
-        title: 'Live workshops',
-        desc: 'Short sessions that turn scattered creator advice into practical weekly learning.',
-        metric: 'Weekly',
-        label: 'sessions on strategy, editing, and pitching',
-        status: 'Soon',
-        caption: 'learning designed to stay useful'
-      },
-      portfolio: {
-        title: 'Portfolio builder',
-        desc: 'A cleaner way to present your niche, your work, and your growth without overcomplicating it.',
-        metric: '1 link',
-        label: 'to share your story and creator proof',
-        status: 'Beta',
-        caption: 'shaping a sharper first impression'
-      },
-      matchmaking: {
-        title: 'Collab matching',
-        desc: 'Find creators who make sense for your city, college, niche, or next idea.',
-        metric: 'Better fit',
-        label: 'for collabs that feel relevant, not random',
-        status: 'Soon',
-        caption: 'designed to make momentum easier'
-      },
-      app: {
-        title: 'Pipeup app',
-        desc: 'The mobile home for everything so opportunities, people, and learning stay close.',
-        metric: 'All-in-one',
-        label: 'access across community, work, and growth',
-        status: 'Soon',
-        caption: 'the final layer that pulls it together'
-      }
-    }
-
-    const visionSteps = gsap.utils.toArray('.vision-step')
-    const visionPhone = document.querySelector('.vision-phone')
-    const visionScreenTitle = document.getElementById('vision-screen-title')
-    const visionScreenDesc = document.getElementById('vision-screen-desc')
-    const visionMiniMetric = document.getElementById('vision-mini-metric')
-    const visionMiniLabel = document.getElementById('vision-mini-label')
-    const visionMiniStatus = document.getElementById('vision-mini-status')
-    const visionMiniCaption = document.getElementById('vision-mini-caption')
-    let currentVisionFeature = 'community'
-
-    function setVisionFeature(key) {
-      const feature = featureContent[key]
-      if (!feature || currentVisionFeature === key) return
-
-      currentVisionFeature = key
-
-      gsap.timeline({ defaults: { duration: 0.25, ease: 'power2.out' } })
-        .to(
-          [visionScreenTitle, visionScreenDesc, visionMiniMetric, visionMiniLabel, visionMiniStatus, visionMiniCaption],
-          { opacity: 0, y: 6, stagger: 0.015 },
-          0
-        )
-        .add(() => {
-          visionScreenTitle.textContent = feature.title
-          visionScreenDesc.textContent = feature.desc
-          visionMiniMetric.textContent = feature.metric
-          visionMiniLabel.textContent = feature.label
-          visionMiniStatus.textContent = feature.status
-          visionMiniCaption.textContent = feature.caption
-        })
-        .fromTo(
-          [visionScreenTitle, visionScreenDesc, visionMiniMetric, visionMiniLabel, visionMiniStatus, visionMiniCaption],
-          { opacity: 0, y: 8 },
-          { opacity: 1, y: 0, stagger: 0.02, clearProps: 'opacity,transform' }
-        )
-
-      gsap.fromTo(visionPhone, { scale: 0.99 }, { scale: 1, duration: 0.4, ease: 'power2.out', overwrite: true })
-    }
-
-    let mm = gsap.matchMedia()
-    
-    mm.add("(min-width: 769px)", () => {
-      // Pin phone container shadow
-      ScrollTrigger.create({
-        trigger: '.vision-stage',
-        start: 'top 50%',
-        onEnter: () => visionPhone.classList.add('is-settled'),
-        onLeaveBack: () => visionPhone.classList.remove('is-settled')
-      })
-
-      // Scrub each card into focus, and back out
-      visionSteps.forEach((step) => {
-        const featureKey = step.dataset.feature
-        
-        // Scrub: Scale and Opacity up as element reaches center
-        gsap.to(step, {
-          opacity: 1,
-          scale: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: step,
-            start: 'top 80%',
-            end: 'top 45%',
-            scrub: true,
-          }
-        })
-        
-        // Scrub: Scale and Opacity down as it leaves viewport
-        gsap.to(step, {
-          opacity: 0.15,
-          scale: 0.95,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: step,
-            start: 'bottom 40%',
-            end: 'top 0%',
-            scrub: true,
-          }
-        })
-        
-        // Trigger feature updates cleanly based on viewport threshold
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 55%',
-          end: 'bottom 55%',
-          onEnter: () => {
-            step.classList.add('is-active')
-            setVisionFeature(featureKey)
-          },
-          onLeave: () => step.classList.remove('is-active'),
-          onEnterBack: () => {
-            step.classList.add('is-active')
-            setVisionFeature(featureKey)
-          },
-          onLeaveBack: () => step.classList.remove('is-active')
-        })
-      })
-    })
-    
-    mm.add("(max-width: 768px)", () => {
-      // Mobile discrete scrolling behavior (fallback for smoother perf on phones)
-      visionSteps.forEach((step) => {
-        const featureKey = step.dataset.feature
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 65%',
-          end: 'bottom 35%',
-          onEnter: () => {
-            visionSteps.forEach(s => s.classList.remove('is-active'))
-            step.classList.add('is-active')
-            setVisionFeature(featureKey)
-          },
-          onEnterBack: () => {
-            visionSteps.forEach(s => s.classList.remove('is-active'))
-            step.classList.add('is-active')
-            setVisionFeature(featureKey)
-          }
-        })
-      })
-    })
-
-    currentVisionFeature = ''
-    setVisionFeature('community')
-    ScrollTrigger.refresh()
-  }
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const exSec=document.querySelector('#exaggerate');
+const exLines=[...document.querySelectorAll('#exaggerate .ex-line')];
+function updateExReveal(){
+  if(!exSec||!exLines.length)return;
+  const rect=exSec.getBoundingClientRect();
+  const range=window.innerHeight+rect.height;
+  const progress=Math.min(1,Math.max(0,(window.innerHeight-rect.top)/range));
+  const litCount=Math.ceil(progress*(exLines.length+1));
+  exLines.forEach((line,i)=>line.classList.toggle('lit',i<litCount));
+}
+updateExReveal();
+document.addEventListener('scroll',updateExReveal,{passive:true});
+window.addEventListener('resize',updateExReveal);
 </script>
 </body>
 </html>
