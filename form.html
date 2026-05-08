@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>pipeup — join the community</title>
+  <title>pipeup - join the community</title>
   <link rel="icon" type="image/png" href="./Public/photos/logo.png">
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
     rel="stylesheet">
 
-  <!-- Firebase — replace YOUR_ values with your actual project config -->
+  <!-- Firebase - replace YOUR_ values with your actual project config -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script>
@@ -525,6 +525,30 @@
       gap: 10px
     }
 
+    .cb-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 12px
+    }
+
+    .cb-checkall {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--lime-dark);
+      background: var(--lime-tint);
+      border: 1.5px solid rgba(168, 230, 61, .45);
+      border-radius: var(--r-md);
+      padding: 7px 11px;
+      cursor: pointer;
+      transition: background .15s, transform .15s var(--spring);
+    }
+
+    .cb-checkall:hover {
+      background: var(--lime-light);
+      transform: translateY(-1px)
+    }
+
     .cb-row {
       display: flex;
       align-items: flex-start;
@@ -575,6 +599,13 @@
       font-size: 13px;
       line-height: 1.55;
       color: var(--ink)
+    }
+
+    .cb-lbl a {
+      color: var(--lime-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px
     }
 
     /* ── niche / tags ────────────────────────────────────────────── */
@@ -706,7 +737,22 @@
     .chips-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px
+      gap: 6px;
+      max-height: 112px;
+      overflow-y: auto;
+      padding: 2px 4px 8px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      mask-image: linear-gradient(to bottom, #000 calc(100% - 18px), transparent);
+    }
+
+    .chips-grid::-webkit-scrollbar {
+      width: 6px
+    }
+
+    .chips-grid::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px
     }
 
     .chip {
@@ -1123,7 +1169,7 @@
       </div>
       <div class="suc-badge">you're in! 🎉</div>
       <h1 class="suc-title">welcome to<br>the pipeup family.</h1>
-      <p class="suc-sub">we've got your application. we'll review and reach out soon. real creators, real deals — this
+      <p class="suc-sub">we've got your application. we'll review and reach out soon. real creators, real deals - this
         is just the beginning.</p>
       <div class="redirect-box">
         <span>📲</span>
@@ -1134,7 +1180,7 @@
 
   <script>
     /* ─────────────────────────────────────────────────────────────
-       CONSTANTS — edit WHATSAPP_LINK before deploying
+       CONSTANTS - edit WHATSAPP_LINK before deploying
     ───────────────────────────────────────────────────────────── */
     const WHATSAPP_LINK = 'https://chat.whatsapp.com/Hq0MAlXp0F8LUJ8fUxnTC0';
 
@@ -1197,39 +1243,38 @@
 
     const ENGAGE = [
       'just getting started 👋', 'warming up 🔥', 'on a roll!', 'you\'re doing great ✨',
-      'halfway there — keep going 🚀', 'more than halfway done!', 'almost there 💪',
+      'halfway there - keep going 🚀', 'more than halfway done!', 'almost there 💪',
       'last few questions, you\'ve got this!', 'you\'re basically pipeup now 🎉'
     ];
 
-    const MILESTONES = { 5: '25% done! keep it up 🚀', 10: 'halfway! you\'re killing it 🔥', 15: '75% done! final stretch 💪' };
+    const MILESTONES = { 4: '25% done! keep it up 🚀', 8: 'halfway! you\'re killing it 🔥', 11: '75% done! final stretch 💪' };
 
     /* ─────────────────────────────────────────────────────────────
        STEP DEFINITIONS
     ───────────────────────────────────────────────────────────── */
     const STEPS = [
-      { id: 'name', type: 'text', field: 'name', required: true, label: 'let\'s get started', q: 'what should we call you?', hint: 'your full name — no numbers, just your real name', placeholder: 'full name' },
-      { id: 'email', type: 'email', field: 'email', required: true, label: 'contact', q: 'your email address?', hint: 'we\'ll reach out here — use one you actually check', placeholder: 'you@example.com' },
+      { id: 'name', type: 'text', field: 'name', required: true, label: 'let\'s get started', q: 'what should we call you?', hint: 'your full name - no numbers, just your real name', placeholder: 'full name' },
+      { id: 'email', type: 'email', field: 'email', required: true, label: 'contact', q: 'your email address?', hint: 'we\'ll reach out here - use one you actually check', placeholder: 'you@example.com' },
       { id: 'phone', type: 'tel', field: 'phone', required: true, label: 'contact', q: 'your phone number?', hint: '10-digit indian mobile number', placeholder: '+91 98765 43210' },
-      { id: 'yt_handle', type: 'text', field: 'ytHandle', required: false, label: 'youtube', q: 'your youtube channel handle?', hint: 'skip if you\'re not on youtube', placeholder: '@yourchannel' },
-      { id: 'yt_link', type: 'url', field: 'ytLink', required: false, label: 'youtube', q: 'drop the link to your channel', hint: 'youtube.com/c/... or youtube.com/@...', placeholder: 'youtube.com/@yourchannel' },
-      { id: 'ig_handle', type: 'text', field: 'igHandle', required: false, label: 'instagram', q: 'your instagram handle?', hint: 'skip if you\'re not on instagram', placeholder: '@yourhandle' },
-      { id: 'ig_link', type: 'url', field: 'igLink', required: false, label: 'instagram', q: 'and the link to your instagram?', hint: 'instagram.com/yourhandle', placeholder: 'instagram.com/yourhandle' },
-      { id: 'com_name', type: 'text', field: 'communityName', required: false, label: 'your community', q: 'do you have a creator community? what\'s it called?', hint: 'whatsapp group, discord, telegram — skip if none.', placeholder: 'community name' },
-      { id: 'com_link', type: 'url', field: 'communityLink', required: false, label: 'your community', q: 'and the link to it?', hint: 'invite link or page URL', placeholder: 'chat.whatsapp.com/...' },
-      {
-        id: 'agrees', type: 'checkboxes', field: 'agreements', required: true, label: 'the deal', q: 'a few things before we move forward', hint: 'all four must be checked',
-        checkboxes: ['my content is original and authentically created by me.', 'i\'ll represent pipeup with integrity — no spam, no bad vibes.', 'i understand brand deals depend on fit and aren\'t guaranteed for every creator.', 'i\'ll engage genuinely with the community and support fellow creators.']
-      },
-      { id: 'niche', type: 'tags', field: 'niche', required: true, label: 'content niche', q: 'what kind of content do you make?', hint: 'type any niche & press enter, or pick from suggestions. up to 5.' },
+      { id: 'yt_link', type: 'url', field: 'ytLink', required: false, label: 'youtube', q: 'drop your youtube channel link', placeholder: 'youtube.com/@yourchannel' },
+      { id: 'ig_link', type: 'url', field: 'igLink', required: false, allowSkip: false, label: 'instagram', q: 'drop your instagram profile link', placeholder: 'instagram.com/yourhandle' },
+      { id: 'niche', type: 'tags', field: 'niche', required: true, label: 'content niche', q: 'what kind of content do you make?', hint: 'search and select up to 5 niches, or type your own and press enter.' },
       { id: 'state', type: 'state', field: 'state', required: true, label: 'location', q: 'which state are you based in?', hint: 'start typing to search', placeholder: 'search state...' },
       { id: 'city', type: 'city', field: 'city', required: true, label: 'location', q: 'and which city?', placeholder: 'search city...' },
-      { id: 'q1', type: 'textarea', field: 'q1', required: true, label: 'let\'s get real', q: 'what has worked best for you so far — and why do you think it worked?', hint: 'be specific. we love creators who reflect on their craft.', placeholder: 'tell us honestly...' },
       { id: 'q2', type: 'textarea', field: 'q2', required: true, label: 'growth mode', q: 'what are you trying to improve right now as a creator?', hint: 'no filter needed here.', placeholder: 'what\'s your current challenge...' },
-      { id: 'q3', type: 'textarea', field: 'q3', required: true, label: 'mindset check', q: 'are you open to feedback and iteration on your content?', hint: 'tell us how you handle critique.', placeholder: 'how do you take feedback...' },
-      { id: 'q4', type: 'textarea', field: 'q4', required: true, label: 'what you need', q: 'what kind of support are you expecting from pipeup?', hint: 'brand deals, collabs, mentorship — all of it?', placeholder: 'what would change the game for you...' },
-      { id: 'q5', type: 'textarea', field: 'q5', required: true, label: '3 month vision', q: 'what does "winning" look like for you in the next 3 months?', hint: 'concrete and specific beats vague and hopeful.', placeholder: 'in 3 months i want to...' },
-      { id: 'q6', type: 'textarea', field: 'q6', required: true, label: 'your edge', q: 'what\'s your unfair advantage as a creator?', hint: 'the thing only you can do.', placeholder: 'what makes you different...' },
-      { id: 'pitch', type: 'pitch', field: 'pitchAmount', required: true, label: 'the business end 🤝', q: 'give us an amount to pitch to brands from your side... we are yours', hint: 'per post / reel / video — your call. don\'t undersell.', placeholder: '5000' }
+      { id: 'q4', type: 'textarea', field: 'q4', required: true, label: 'what you need', q: 'what kind of support are you expecting from pipeup?', hint: 'brand deals, collabs, mentorship - all of it?', placeholder: 'what would change the game for you...' },
+      { id: 'pitch', type: 'pitch', field: 'pitchAmount', required: true, label: 'the business end 🤝', q: 'give us an amount to pitch to brands from your side... we are yours', hint: 'per post / reel / video - your call. don\'t undersell.', placeholder: '5000' },
+      {
+        id: 'agrees', type: 'checkboxes', field: 'agreements', required: true, label: 'final check', q: 'a few things before we move forward', hint: 'all boxes must be checked',
+        checkboxes: [
+          'my content is original and authentically created by me.',
+          'i\'ll represent pipeup with integrity - no spam, no bad vibes.',
+          'i understand brand deals depend on fit and aren\'t guaranteed for every creator.',
+          'i\'ll engage genuinely with the community and support fellow creators.',
+          'i am open to feedback and iteration on my content.',
+          'i accept all the <a href="termsandconditions.html" target="_blank" rel="noopener">terms and conditions</a>.'
+        ]
+      }
     ];
 
     /* ─────────────────────────────────────────────────────────────
@@ -1245,11 +1290,31 @@
     function vName(v) { if (!v || v.trim().length < 2) return 'name must be at least 2 characters.'; if (/\d/.test(v)) return 'name shouldn\'t contain numbers.'; if (/[^a-zA-Z\s'\-.]/.test(v)) return 'name has invalid characters.'; return null; }
     function vEmail(v) { if (!v) return 'email is required.'; if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'enter a valid email address.'; return null; }
     function vPhone(v) { if (!v) return 'phone number is required.'; const d = v.replace(/[\s\-+() ]/g, ''); const c = d.startsWith('91') && d.length === 12 ? d.slice(2) : d; if (!/^[6-9]\d{9}$/.test(c)) return 'enter a valid 10-digit indian mobile number.'; return null; }
+    function cleanUrl(v) { return (v || '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[?#]/)[0].replace(/\/+$/, ''); }
+    function vYouTubeProfile(v) {
+      const u = cleanUrl(v);
+      if (!u) return null;
+      if (!/^(m\.)?youtube\.com\/.+/.test(u)) return 'paste a youtube channel/profile link.';
+      if (/youtube\.com\/(watch|shorts|embed|live|playlist)\b/.test(u)) return 'please paste your youtube channel/profile link, not a video link.';
+      if (!/youtube\.com\/(@[^/]+|channel\/[^/]+|c\/[^/]+|user\/[^/]+)$/.test(u)) return 'please paste your youtube channel/profile link.';
+      return null;
+    }
+    function vInstagramProfile(v) {
+      const u = cleanUrl(v);
+      if (!u) return null;
+      if (!/^(m\.)?instagram\.com\/[^/]+/.test(u)) return 'paste an instagram profile link.';
+      if (/instagram\.com\/(p|reel|tv|stories|explore)\b/.test(u)) return 'please paste your instagram profile link, not a post or reel link.';
+      if (!/instagram\.com\/[a-z0-9._]+$/.test(u)) return 'please paste your instagram profile link.';
+      return null;
+    }
 
     function runValidation(s, val) {
       if (s.id === 'name') return vName(val);
       if (s.id === 'email') return vEmail(val);
       if (s.id === 'phone') return vPhone(val);
+      if (s.id === 'yt_link') return vYouTubeProfile(val);
+      if (s.id === 'ig_link' && !val?.trim() && !D.ytLink) return 'please add either your youtube channel link or instagram profile link.';
+      if (s.id === 'ig_link') return vInstagramProfile(val);
       if (s.required && !val?.trim()) return 'please fill this in to continue.';
       return null;
     }
@@ -1339,18 +1404,20 @@
       const ql = q.trim().toLowerCase();
       const sel = D.niche || [];
       const chips = [...document.querySelectorAll('.chip')];
+      const grid = document.getElementById('cGrid');
       if (!ql) {
         chips.forEach(c => { c.classList.remove('hidden'); c.classList.toggle('off', !sel.includes(c.dataset.t) && sel.length >= 5) });
+        if (grid) grid.scrollTop = 0;
         return;
       }
       // sort: starts-with first, then contains, rest hidden
       const sw = [], ct = [], no = [];
       chips.forEach(c => { const t = c.dataset.t; if (t.startsWith(ql)) sw.push(c); else if (t.includes(ql)) ct.push(c); else no.push(c); });
-      const grid = document.getElementById('cGrid');
       [...sw, ...ct, ...no].forEach(c => grid.appendChild(c));
       sw.forEach(c => { c.classList.remove('hidden'); c.classList.toggle('off', !sel.includes(c.dataset.t) && sel.length >= 5) });
       ct.forEach(c => { c.classList.remove('hidden'); c.classList.toggle('off', !sel.includes(c.dataset.t) && sel.length >= 5) });
       no.forEach(c => c.classList.add('hidden'));
+      if (grid) grid.scrollTop = 0;
     }
 
     function renderNiche() {
@@ -1359,6 +1426,11 @@
       if (sc) sc.innerHTML = sel.map(t => `<span class="tag-pill"><span>${t}</span><button onclick="removeNiche('${t}')" aria-label="remove ${t}">×</button></span>`).join('');
       const cc = document.getElementById('tagsCnt'); if (cc) cc.textContent = `${sel.length}/5 selected`;
       document.querySelectorAll('.chip').forEach(c => { c.classList.toggle('on', sel.includes(c.dataset.t)); c.classList.toggle('off', !sel.includes(c.dataset.t) && sel.length >= 5) });
+    }
+
+    function checkAllAgreements() {
+      document.querySelectorAll('.cb-row input[type="checkbox"]').forEach(cb => { cb.checked = true; });
+      clearErr();
     }
 
     function flashMax() {
@@ -1406,7 +1478,10 @@
 
       } else if (s.type === 'checkboxes') {
         const sv = D.agreements || [];
-        body = `<div class="cb-list">${s.checkboxes.map((l, i) => `
+        body = `<div class="cb-actions">
+        <button class="cb-checkall" type="button" onclick="checkAllAgreements()">check all</button>
+      </div>
+      <div class="cb-list">${s.checkboxes.map((l, i) => `
       <label class="cb-row"><input type="checkbox" id="cb${i}" ${sv[i] ? 'checked' : ''}>
       <span class="cb-box"></span><span class="cb-lbl">${l}</span></label>`).join('')}</div>
       <div class="err-msg" id="errMsg"></div>`;
@@ -1419,14 +1494,14 @@
         }).join('');
         body = `<div class="niche-row ac-wrap">
         <input class="niche-inp" id="nInp" type="text"
-          placeholder="type any niche, press enter to add..." maxlength="40" autocomplete="off" spellcheck="false">
+          placeholder="search niche or type your own..." maxlength="40" autocomplete="off" spellcheck="false">
         <div class="ac-drop" id="nDrop"></div>
         <button class="niche-add" onclick="addNiche()" aria-label="add">+</button>
       </div>
       <div class="tags-sel" id="selTags">
         ${sel.map(t => `<span class="tag-pill"><span>${t}</span><button onclick="removeNiche('${t}')">×</button></span>`).join('')}
       </div>
-      <div class="niche-div">quick picks</div>
+      <div class="niche-div">search results & picks</div>
       <div class="chips-grid" id="cGrid">${chips}</div>
       <div class="niche-foot">
         <span class="tags-count" id="tagsCnt">${sel.length}/5 selected</span>
@@ -1459,7 +1534,7 @@
         body = `<div class="pitch-wrap">
         <span class="pitch-pfx">₹</span>
         <input class="f-input pitch-inp" id="stepInput" type="number"
-          min="0" placeholder="${s.placeholder || ''}" value="${D[s.field] || ''}">
+          min="0" step="100" placeholder="${s.placeholder || ''}" value="${D[s.field] || ''}">
       </div>
       <div class="err-msg" id="errMsg"></div>`;
       }
@@ -1481,7 +1556,7 @@
           </span>
           <div class="spin"></div>
         </button>
-        ${!s.required ? `<button class="btn-skip" onclick="goSkip()">skip</button>` : ''}
+        ${!s.required && s.allowSkip !== false ? `<button class="btn-skip" onclick="goSkip()">skip</button>` : ''}
       </div>
       ${['text', 'email', 'tel', 'url', 'textarea', 'pitch'].includes(s.type)
           ? `<span class="enter-hint"><kbd class="kbd">↵</kbd> to continue</span>` : ''}
@@ -1545,7 +1620,6 @@
     ───────────────────────────────────────────────────────────── */
     function validateStep() {
       const s = STEPS[step];
-      if (!s.required) return true;
 
       if (['text', 'email', 'tel', 'url', 'pitch'].includes(s.type)) {
         const inp = document.getElementById('stepInput');
@@ -1561,7 +1635,7 @@
       }
       if (s.type === 'checkboxes') {
         const ok = s.checkboxes.every((_, i) => document.getElementById(`cb${i}`)?.checked);
-        if (!ok) { showErr('please agree to all four to continue.'); shakeCard(); return false; }
+        if (!ok) { showErr('please check every box to continue.'); shakeCard(); return false; }
         return true;
       }
       if (s.type === 'tags') {
@@ -1588,7 +1662,11 @@
       const s = STEPS[step];
       if (['text', 'email', 'tel', 'url', 'pitch'].includes(s.type)) {
         const v = document.getElementById('stepInput')?.value?.trim();
-        if (v) D[s.field] = s.type === 'pitch' ? Number(v) : v;
+        if (s.type === 'pitch') {
+          if (v) D[s.field] = Number(v);
+        } else {
+          D[s.field] = v || '';
+        }
       } else if (s.type === 'textarea') {
         const v = document.getElementById('stepInput')?.value?.trim();
         if (v) D[s.field] = v;
@@ -1615,7 +1693,12 @@
       transit(step + 1);
     }
     function goBack() { if (busy || step === 0) return; collectStep(); transit(step - 1); }
-    function goSkip() { if (busy) return; collectStep(); transit(step + 1); }
+    function goSkip() {
+      if (busy) return;
+      const s = STEPS[step];
+      if (s?.field) D[s.field] = '';
+      transit(step + 1);
+    }
 
     function transit(next) {
       busy = true;

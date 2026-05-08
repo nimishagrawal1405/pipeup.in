@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pipeup — one stop solution for creators</title>
+  <title>pipeup - one stop solution for creators</title>
   <link rel="icon" type="image/png" href="./Public/photos/logo.png">
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
@@ -48,7 +48,19 @@
       <a href="form.html" target="_blank" class="btn btn-ghost btn-sm">i'm a creator</a>
       <a href="brand.html" target="_blank" class="btn btn-lime btn-sm">i'm a brand</a>
     </div>
+    <button class="nav-menu-btn" type="button" aria-label="open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+  <div class="mobile-menu-backdrop" data-menu-close></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#problem">the problem</a>
+    <a href="#solve">what we do</a>
+    <a href="#how">how it works</a>
+    <a href="form.html" target="_blank" rel="noopener" class="mobile-cta mobile-creator">i'm a creator</a>
+    <a href="brand.html" target="_blank" rel="noopener" class="mobile-cta mobile-brand">i'm a brand</a>
+  </div>
   <section class="hero" id="home">
     <div class="hero-mesh">
       <div class="mesh-orb mo1"></div>
@@ -62,7 +74,7 @@
           <br>the <span class="italic-word">first 500</span>
         </h1>
         <p class="hero-sub">we're building a free community where every student creator in India can land brand deals,
-          learn, and grow — together. get in early. help shape it.</p>
+          learn, and grow - together. get in early. help shape it.</p>
         <div class="hero-ctas">
           <a href="form.html" class="btn btn-lime btn-lg">i'm a creator <svg width="14"
               height="14" fill="none" viewBox="0 0 16 16">
@@ -145,7 +157,7 @@
           <div class="struggle-body">
             <div class="struggle-label">the grind</div>
             <div class="struggle-ttl">you post. nobody sees it.</div>
-            <div class="struggle-bdy">hours on a reel, perfect caption, 11pm posting time — 3 likes. two from family.
+            <div class="struggle-bdy">hours on a reel, perfect caption, 11pm posting time - 3 likes. two from family.
             </div>
           </div>
           <div class="struggle-overlay">
@@ -266,7 +278,7 @@
           <div class="s-eye">how we fix it</div>
           <h2 class="s-ttl">pipeup is the <span class="serif">unfair advantage</span><br>you've been missing</h2>
           <p class="s-sub" style="margin-bottom:0">we take the rejection, the guesswork, and the loneliness out of being
-            a creator — and replace it with real connections, real deals, and a community that moves with you.</p>
+            a creator - and replace it with real connections, real deals, and a community that moves with you.</p>
         </div>
       </div>
       <div class="solve-cards">
@@ -290,7 +302,7 @@
         <div class="solve-card reveal d2">
           <div class="solve-num">04</div>
           <div class="solve-ttl">workshops from people who've done it</div>
-          <div class="solve-bdy">hands-on sessions on content strategy, growth, brand deals — from creators who've been
+          <div class="solve-bdy">hands-on sessions on content strategy, growth, brand deals - from creators who've been
             exactly where you are.</div>
         </div>
       </div>
@@ -312,7 +324,7 @@
           <div class="step-arrow">→</div>
           <div class="step-num">2</div>
           <div class="step-ttl">join the whatsapp group</div>
-          <div class="step-bdy">after filling the form, you get redirected straight to our whatsapp group — where brand
+          <div class="step-bdy">after filling the form, you get redirected straight to our whatsapp group - where brand
             opps, collabs, and drops happen.</div>
           <div class="step-wa"><span class="wa-dot"></span>redirected right after form</div>
         </div>
@@ -330,7 +342,7 @@
       <div>
         <div class="s-eye" style="color:rgba(168,230,61,.75)">why now</div>
         <div class="dark-s-ttl">we're building this <span class="serif">with</span> creators,<br>not for them.</div>
-        <p class="dark-s-sub">no inflated numbers. no fake stats. we're early — and that means you get to help shape
+        <p class="dark-s-sub">no inflated numbers. no fake stats. we're early - and that means you get to help shape
           what pipeup becomes.</p>
       </div>
       <div class="feature-pills">
@@ -339,7 +351,7 @@
               <circle cx="7" cy="7" r="5.5" stroke="#A8E63D" stroke-width="1.4" />
               <path d="M4.5 7l1.8 1.8L9.5 5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"
                 stroke-linejoin="round" />
-            </svg></div>free for creators — right now
+            </svg></div>free for creators - right now
         </div>
         <div class="fpill">
           <div class="fpill-icon"><svg width="14" height="14" fill="none" viewBox="0 0 14 14">
@@ -461,6 +473,24 @@
     <div class="footer-copy">© 2026 pipeup</div>
   </footer>
   <script>
+    const menuBtn = document.querySelector('.nav-menu-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function closeMobileMenu() {
+      document.body.classList.remove('menu-open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    }
+    menuBtn?.addEventListener('click', () => {
+      const open = document.body.classList.toggle('menu-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+    document.querySelector('[data-menu-close]')?.addEventListener('click', closeMobileMenu);
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1040) closeMobileMenu();
+    });
+
     const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .08 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     const exSec = document.querySelector('#exaggerate');

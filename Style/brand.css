@@ -118,7 +118,7 @@ nav {
 }
 
 /* ══════════════════════════════
-   SECTION 1 — HONEST INTRO
+   SECTION 1 - HONEST INTRO
    ~100vh dark, editorial
 ══════════════════════════════ */
 .intro-section {
@@ -166,7 +166,7 @@ nav {
   z-index: 1;
 }
 
-/* left — the honest text */
+/* left - the honest text */
 .intro-left {
   padding-top: 8px;
 }
@@ -208,7 +208,7 @@ nav {
   color: var(--lime);
 }
 
-/* honest cards — the real talk */
+/* honest cards - the real talk */
 .honest-list {
   display: flex;
   flex-direction: column;
@@ -271,7 +271,7 @@ nav {
   font-weight: 400;
 }
 
-/* right — the manifesto card */
+/* right - the manifesto card */
 .manifesto-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -386,7 +386,7 @@ nav {
 }
 
 /* ══════════════════════════════
-   SECTION 2 — BRAND FORM
+   SECTION 2 - BRAND FORM
    ~100vh white/off, clean
 ══════════════════════════════ */
 .form-section {
@@ -406,7 +406,7 @@ nav {
   align-items: start;
 }
 
-/* left — context */
+/* left - context */
 .form-context {
   position: sticky;
   top: 88px;
@@ -470,7 +470,7 @@ nav {
   flex-shrink: 0;
 }
 
-/* right — form */
+/* right - form */
 .brand-form {
   background: var(--white);
   border: 1px solid var(--border);
