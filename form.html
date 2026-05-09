@@ -1178,7 +1178,7 @@
       </div>
     </div>
   </main>
-<div id="recaptcha-container"></div>
+
   <script>
     /* ─────────────────────────────────────────────────────────────
        CONSTANTS - edit WHATSAPP_LINK before deploying
@@ -1314,24 +1314,7 @@ let emailLinkSent = false;
 let emailVerified = false;
 
   
-async function sendEmailVerificationLink(email) {
-  const actionCodeSettings = {
-    url: 'https://pipeup.in/form.html',
-    handleCodeInApp: true
-  };
 
-  await firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
-  emailLinkSent = true;
-}
-
-async function checkEmailLinkSignIn() {
-  if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-    const email = D.email || window.prompt('Confirm your email');
-    if (!email) return;
-    await firebase.auth().signInWithEmailLink(email, window.location.href);
-    emailVerified = true;
-  }
-}
     /* ─────────────────────────────────────────────────────────────
        VALIDATION
     ───────────────────────────────────────────────────────────── */
