@@ -13,6 +13,7 @@
   <!-- Firebase - replace YOUR_ values with your actual project config -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBzDfUR-6GOFNfg3Wz1-oUfKNiGe_vq5L4",
@@ -1177,11 +1178,13 @@
       </div>
     </div>
   </main>
-
+<div id="recaptcha-container"></div>
   <script>
     /* ─────────────────────────────────────────────────────────────
        CONSTANTS - edit WHATSAPP_LINK before deploying
     ───────────────────────────────────────────────────────────── */
+    
+
     const WHATSAPP_LINK = 'https://chat.whatsapp.com/Hq0MAlXp0F8LUJ8fUxnTC0';
 
     const NICHES = [
@@ -1255,6 +1258,7 @@
     const STEPS = [
       { id: 'name', type: 'text', field: 'name', required: true, label: 'let\'s get started', q: 'what should we call you?', hint: 'your full name - no numbers, just your real name', placeholder: 'full name' },
       { id: 'email', type: 'email', field: 'email', required: true, label: 'contact', q: 'your email address?', hint: 'we\'ll reach out here - use one you actually check', placeholder: 'you@example.com' },
+      { id: "email_verify", type: "info", field: "emailVerify", required: true, label: "verification", q: "verify your email to continue", hint: "we'll send a verification link to your email. open it and then come back here.", placeholder: "" },
       { id: 'phone', type: 'tel', field: 'phone', required: true, label: 'contact', q: 'your phone number?', hint: '10-digit indian mobile number', placeholder: '+91 98765 43210' },
       { id: 'yt_link', type: 'url', field: 'ytLink', required: false, label: 'youtube', q: 'drop your youtube channel link', placeholder: 'youtube.com/@yourchannel' },
       { id: 'ig_link', type: 'url', field: 'igLink', required: false, allowSkip: false, label: 'instagram', q: 'drop your instagram profile link', placeholder: 'instagram.com/yourhandle' },
@@ -1280,10 +1284,48 @@
     /* ─────────────────────────────────────────────────────────────
        APP STATE
     ───────────────────────────────────────────────────────────── */
+    async function sendEmailVerificationLink(email) {
+  const actionCodeSettings = {
+    url: 'https://pipeup.in/form.html',
+    handleCodeInApp: true
+  };
+async function checkEmailLinkSignIn() {
+  if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+    const email = window.prompt('Apna wahi email dobara enter karo');
+    if (!email) return;
+
+    await firebase.auth().signInWithEmailLink(email, window.location.href);
+    emailVerified = true;
+    showToast('Email verified');
+  }
+}
+  await firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
+}
     const D = {};          // form data
     let step = 0;
     let busy = false;
+let emailLinkSent = false;
+let emailVerified = false;
 
+  
+async function sendEmailVerificationLink(email) {
+  const actionCodeSettings = {
+    url: 'https://pipeup.in/form.html',
+    handleCodeInApp: true
+  };
+
+  await firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
+  emailLinkSent = true;
+}
+
+async function checkEmailLinkSignIn() {
+  if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+    const email = D.email || window.prompt('Confirm your email');
+    if (!email) return;
+    await firebase.auth().signInWithEmailLink(email, window.location.href);
+    emailVerified = true;
+  }
+}
     /* ─────────────────────────────────────────────────────────────
        VALIDATION
     ───────────────────────────────────────────────────────────── */
@@ -1312,6 +1354,10 @@
       if (s.id === 'name') return vName(val);
       if (s.id === 'email') return vEmail(val);
       if (s.id === 'phone') return vPhone(val);
+      if (s.id === 'otp') {
+  if (!/^\d{6}$/.test(val)) return '6-digit OTP enter karo.';
+  return null;
+}
       if (s.id === 'yt_link') return vYouTubeProfile(val);
       if (s.id === 'ig_link' && !val?.trim() && !D.ytLink) return 'please add either your youtube channel link or instagram profile link.';
       if (s.id === 'ig_link') return vInstagramProfile(val);
@@ -1461,15 +1507,25 @@
       let body = '';
       const last = idx === total - 1;
 
-      if (['text', 'email', 'tel', 'url'].includes(s.type)) {
+      if (['text', 'email', 'tel', 'url', 'otp'].includes(s.type)) {
         body = `<input class="f-input" id="stepInput" type="${s.type}"
       placeholder="${s.placeholder || ''}" value="${D[s.field] || ''}"
-      autocomplete="${s.type === 'email' ? 'email' : s.type === 'tel' ? 'tel' : 'off'}"
-      inputmode="${s.type === 'tel' ? 'tel' : s.type === 'email' ? 'email' : 'text'}"
+      autocomplete="${s.type === 'email' ? 'email' : s.type === 'tel' ? 'tel' : s.type === 'otp' ? 'one-time-code' : 'off'}"
+inputmode="${s.type === 'tel' ? 'tel' : s.type === 'email' ? 'email' : s.type === 'otp' ? 'numeric' : 'text'}"
       spellcheck="false">
       <div class="err-msg" id="errMsg"></div>`;
 
-      } else if (s.type === 'textarea') {
+      } 
+      else if (s.type === 'info') {
+  body = `
+    <div style="font-size:14px; line-height:1.7; color:var(--muted); background:rgba(255,255,255,.84); border:1.5px solid var(--border); border-radius:var(--r-md); padding:14px;">
+      verification link sent to <strong>${D.email || ''}</strong><br><br>
+      inbox open karo, link pe click karo, phir yahan aake next dabao.
+    </div>
+    <div class="err-msg" id="errMsg"></div>
+  `;
+}
+else if (s.type === 'textarea') {
         const mx = 500, cur = D[s.field] || '';
         body = `<textarea class="f-textarea" id="stepInput" placeholder="${s.placeholder || ''}"
       rows="4" maxlength="${mx}">${cur}</textarea>
@@ -1530,7 +1586,9 @@
             : `<p class="step-hint" style="margin-top:8px;margin-bottom:0">showing cities in ${st}</p>`}
       <div class="err-msg" id="errMsg"></div>`;
 
-      } else if (s.type === 'pitch') {
+      } 
+    
+      else if (s.type === 'pitch') {
         body = `<div class="pitch-wrap">
         <span class="pitch-pfx">₹</span>
         <input class="f-input pitch-inp" id="stepInput" type="number"
@@ -1621,7 +1679,7 @@
     function validateStep() {
       const s = STEPS[step];
 
-      if (['text', 'email', 'tel', 'url', 'pitch'].includes(s.type)) {
+      if (['text', 'email', 'tel', 'url', 'pitch', 'otp'].includes(s.type)) {
         const inp = document.getElementById('stepInput');
         const v = inp?.value?.trim() || '';
         const e = runValidation(s, v);
@@ -1660,7 +1718,7 @@
     ───────────────────────────────────────────────────────────── */
     function collectStep() {
       const s = STEPS[step];
-      if (['text', 'email', 'tel', 'url', 'pitch'].includes(s.type)) {
+      if (['text', 'email', 'tel', 'url', 'pitch', 'otp'].includes(s.type)) {
         const v = document.getElementById('stepInput')?.value?.trim();
         if (s.type === 'pitch') {
           if (v) D[s.field] = Number(v);
@@ -1685,13 +1743,44 @@
        NAVIGATION
     ───────────────────────────────────────────────────────────── */
     async function goNext() {
-      if (busy) return;
-      if (!validateStep()) return;
-      collectStep();
-      if (step === STEPS.length - 1) { await submitForm(); return; }
-      spawnEnvelope();
+  if (busy) return;
+  if (!validateStep()) return;
+
+  collectStep();
+  const s = STEPS[step];
+
+  if (s.id === 'email') {
+    try {
+      busy = true;
+      await sendEmailVerificationLink(D.email);
+      showToast('Verification link sent');
       transit(step + 1);
+      return;
+    } catch (e) {
+      busy = false;
+      console.error('Email link error:', e);
+      showErr(e.message || 'Verification email send nahi hui.');
+      return;
     }
+  }
+
+  if (s.id === 'email_verify') {
+    if (!emailVerified) {
+      showErr('Pehle email link verify karo.');
+      return;
+    }
+    transit(step + 1);
+    return;
+  }
+
+  if (step === STEPS.length - 1) {
+    await submitForm();
+    return;
+  }
+
+  spawnEnvelope();
+  transit(step + 1);
+}
     function goBack() { if (busy || step === 0) return; collectStep(); transit(step - 1); }
     function goSkip() {
       if (busy) return;
@@ -1754,11 +1843,17 @@
        FIREBASE SUBMIT + WHATSAPP REDIRECT
     ───────────────────────────────────────────────────────────── */
     async function submitForm() {
+      if (!emailVerified) {
+  showErr('Pehle email verify karo.');
+  return;
+}
       const btn = document.getElementById('sendBtn');
       btn.classList.add('loading'); btn.disabled = true;
       try {
         await db.collection('creator_applications').add({
           ...D,
+          emailVerified: true,
+verificationMethod: 'email-link',
           submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
           source: 'creator-form-v3'
         });
@@ -1811,17 +1906,23 @@
     /* ─────────────────────────────────────────────────────────────
        INIT
     ───────────────────────────────────────────────────────────── */
-    document.addEventListener('DOMContentLoaded', () => {
-      renderStep(0);
-      const c = document.getElementById('fCard');
-      c.style.opacity = '0'; c.style.transform = 'translateY(30px) scale(.97)';
-      requestAnimationFrame(() => {
-        c.style.transition = 'transform .6s var(--spring),opacity .45s ease';
-        c.style.opacity = '1'; c.style.transform = 'translateY(0) scale(1)';
-        setTimeout(() => { c.style.transition = ''; c.style.transform = ''; }, 680);
-      });
-    });
+    document.addEventListener('DOMContentLoaded', async () => {
+  await checkEmailLinkSignIn();
+
+  renderStep(0);
+  const c = document.getElementById('fCard');
+  c.style.opacity = '0';
+  c.style.transform = 'translateY(30px) scale(.97)';
+
+  requestAnimationFrame(() => {
+    c.style.transition = 'transform .6s var(--spring),opacity .45s ease';
+    c.style.opacity = '1';
+    c.style.transform = 'translateY(0) scale(1)';
+    setTimeout(() => { c.style.transition = ''; c.style.transform = ''; }, 680);
+  });
+});
   </script>
+ 
 </body>
 
 </html>

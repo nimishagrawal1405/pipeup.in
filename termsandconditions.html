@@ -1,148 +1,759 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pipeup - terms and conditions</title>
-  <link rel="icon" type="image/png" href="./Public/photos/logo.png">
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap"
-    rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PipeUp — Terms & Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem; --space-20: 5rem;
+  --radius-sm: 0.375rem; --radius-md: 0.5rem;
+  --radius-lg: 0.75rem; --radius-xl: 1rem;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    :root {
-      --lime: #A8E63D;
-      --lime-dark: #3B6D11;
-      --ink: #111111;
-      --muted: #5F6672;
-      --surface: #F7FAF4;
-      --white: #FFFFFF;
-      --border: #E5E7EB;
-    }
+:root, [data-theme="light"] {
+  --color-bg: #f7f6f2;
+  --color-surface: #f9f8f5;
+  --color-surface-2: #fbfbf9;
+  --color-surface-offset: #edeae5;
+  --color-border: #d4d1ca;
+  --color-divider: #dcd9d5;
+  --color-text: #28251d;
+  --color-text-muted: #7a7974;
+  --color-text-faint: #bab9b4;
+  --color-primary: #7ec800;
+  --color-primary-hover: #6aaa00;
+  --color-primary-highlight: #e8f5cc;
+  --color-accent-dark: #1a1a1a;
+  --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06);
+  --shadow-md: 0 4px 12px oklch(0.2 0.01 80 / 0.08);
+}
 
-    body {
-      min-height: 100vh;
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--surface);
-      color: var(--ink);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
+[data-theme="dark"] {
+  --color-bg: #111110;
+  --color-surface: #161614;
+  --color-surface-2: #1c1b18;
+  --color-surface-offset: #222220;
+  --color-border: #2e2d2a;
+  --color-divider: #252422;
+  --color-text: #e8e6e0;
+  --color-text-muted: #8a8880;
+  --color-text-faint: #4a4946;
+  --color-primary: #b8f040;
+  --color-primary-hover: #caf560;
+  --color-primary-highlight: #1e2e08;
+  --color-accent-dark: #b8f040;
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.3);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4);
+}
 
-    nav {
-      height: 58px;
-      padding: 0 clamp(16px, 5vw, 48px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(0, 0, 0, .06);
-      background: rgba(247, 250, 244, .9);
-      backdrop-filter: blur(18px);
-    }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: 5rem; }
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+  transition: background var(--transition-interactive), color var(--transition-interactive);
+}
+img { display: block; max-width: 100%; }
+p { max-width: 72ch; text-wrap: pretty; }
+h1,h2,h3,h4 { text-wrap: balance; line-height: 1.2; }
+a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-interactive); }
+a:hover { color: var(--color-primary-hover); text-decoration: underline; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; transition: all var(--transition-interactive); }
 
-    .logo {
-      color: var(--ink);
-      font-size: 19px;
-      font-weight: 600;
-      letter-spacing: -.04em;
-      text-decoration: none;
-    }
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: oklch(from var(--color-bg) l c h / 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-6);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-4);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-display); font-size: var(--text-lg);
+  color: var(--color-text); text-decoration: none;
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark svg { color: #111; }
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+.theme-toggle {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.theme-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
+.badge-version {
+  font-size: var(--text-xs); font-weight: 500;
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-primary-highlight);
+  color: var(--color-primary);
+  border-radius: var(--radius-full: 9999px);
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
 
-    .logo em {
-      color: var(--lime-dark);
-      font-style: normal;
-    }
+/* HERO */
+.hero {
+  padding: var(--space-16) var(--space-6) var(--space-12);
+  max-width: 900px; margin-inline: auto;
+  border-bottom: 1px solid var(--color-divider);
+}
+.hero-eyebrow {
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  font-style: italic;
+}
+.hero h1 span { font-style: normal; }
+.hero-meta {
+  display: flex; gap: var(--space-6); flex-wrap: wrap;
+  font-size: var(--text-sm); color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+}
+.hero-meta strong { color: var(--color-text); }
+.intro-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  border-left: 3px solid var(--color-primary);
+}
+.intro-box p { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 65ch; }
+.intro-box p + p { margin-top: var(--space-3); }
 
-    main {
-      width: min(760px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 54px 0 72px;
-    }
+/* LAYOUT */
+.main-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-10) var(--space-6);
+  gap: var(--space-12);
+  align-items: start;
+}
 
-    h1 {
-      font-size: clamp(32px, 7vw, 56px);
-      line-height: 1;
-      letter-spacing: -.05em;
-      margin-bottom: 14px;
-    }
+/* SIDEBAR TOC */
+.toc {
+  position: sticky; top: 5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  font-size: var(--text-sm);
+}
+.toc-title {
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color-text-faint);
+  margin-bottom: var(--space-4);
+}
+.toc ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-1); }
+.toc a {
+  display: block; padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  font-size: var(--text-xs);
+}
+.toc a:hover {
+  background: var(--color-surface-offset);
+  color: var(--color-text);
+  text-decoration: none;
+}
+.toc a.active {
+  background: var(--color-primary-highlight);
+  color: var(--color-primary);
+  font-weight: 500;
+}
 
-    .intro {
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 34px;
-    }
+/* CONTENT */
+.content { min-width: 0; }
+.section {
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: var(--space-12);
+}
+.section:last-child { border-bottom: none; margin-bottom: 0; }
+.section-number {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+.section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+.section h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: var(--space-8) 0 var(--space-3);
+}
+.section p { color: var(--color-text-muted); margin-bottom: var(--space-4); }
+.section p:last-child { margin-bottom: 0; }
+.section ul, .section ol {
+  padding-left: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.section li { color: var(--color-text-muted); }
+.section li::marker { color: var(--color-primary); }
 
-    section {
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-    }
+.highlight-box {
+  background: var(--color-primary-highlight);
+  border: 1px solid oklch(from var(--color-primary) l c h / 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+}
+.highlight-box p { color: var(--color-text); font-weight: 500; margin: 0; }
 
-    h2 {
-      font-size: 18px;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
+.warning-box {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid #f0a040;
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+}
+.warning-box p { color: var(--color-text-muted); margin: 0; font-size: var(--text-sm); }
+.warning-box .warning-label {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #f0a040; margin-bottom: var(--space-2);
+}
 
-    p {
-      color: var(--muted);
-      font-size: 15px;
-    }
+/* TABLE */
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-size: var(--text-sm); margin: var(--space-6) 0;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+.data-table th {
+  background: var(--color-surface-offset);
+  padding: var(--space-3) var(--space-4);
+  text-align: left; font-weight: 600;
+  color: var(--color-text); font-size: var(--text-xs);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border);
+}
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-divider);
+  vertical-align: top;
+}
+.data-table tr:last-child td { border-bottom: none; }
 
-    .back {
-      display: inline-flex;
-      margin-top: 28px;
-      color: var(--lime-dark);
-      font-weight: 600;
-      text-decoration: none;
-    }
-  </style>
+/* FOOTER */
+.footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-10) var(--space-6);
+  text-align: center;
+}
+.footer p { color: var(--color-text-muted); font-size: var(--text-sm); max-width: none; }
+.footer .footer-brand {
+  font-family: var(--font-display); font-size: var(--text-lg);
+  color: var(--color-primary); margin-bottom: var(--space-3);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .toc { display: none; }
+  .hero { padding: var(--space-10) var(--space-4) var(--space-8); }
+  .hero-meta { flex-direction: column; gap: var(--space-2); }
+  .intro-box { padding: var(--space-4) var(--space-5); }
+  .main-layout { padding: var(--space-6) var(--space-4); gap: var(--space-6); }
+  .section h2 { font-size: var(--text-lg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+</style>
 </head>
-
 <body>
-  <nav>
-    <a class="logo" href="index.html">pipe<em>up</em></a>
-  </nav>
 
-  <main>
-    <h1>Terms and conditions</h1>
-    <p class="intro">These terms outline the basic expectations for creators applying to and participating in pipeup.</p>
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </div>
+    PipeUp
+  </a>
+  <div class="nav-actions">
+    <span class="badge-version">v1.0 — May 2026</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
 
-    <section>
-      <h2>Original content</h2>
-      <p>You confirm that the content you submit and represent through pipeup is original, authentic, and created or owned by you.</p>
-    </section>
+<div class="hero">
+  <div class="hero-eyebrow">Legal Document</div>
+  <h1><span>Terms &amp; Conditions</span> — PipeUp.in</h1>
+  <div class="hero-meta">
+    <span><strong>Effective Date:</strong> May 5, 2026</span>
+    <span><strong>Platform:</strong> PipeUp.in</span>
+    <span><strong>Operated by:</strong> PipeUp (Nimish Agrawal, Krishna &amp; Adarsh)</span>
+    <span><strong>Jurisdiction:</strong> India</span>
+  </div>
+  <div class="intro-box">
+    <p>Welcome to PipeUp. These Terms &amp; Conditions ("Terms") explain how our platform works, what you can expect from us, and what we expect from you. We've written this in plain language on purpose — because we believe in being honest with our community.</p>
+    <p>By filling out our form, joining our WhatsApp community, or engaging with PipeUp in any way, you agree to these Terms. Please read them fully before joining.</p>
+  </div>
+</div>
 
-    <section>
-      <h2>Creator conduct</h2>
-      <p>You agree to represent pipeup, brands, and the creator community with integrity, professionalism, and respect.</p>
-    </section>
+<div class="main-layout">
+  <aside class="toc">
+    <div class="toc-title">Contents</div>
+    <ul>
+      <li><a href="#s1">1. Who We Are</a></li>
+      <li><a href="#s2">2. Who Can Join</a></li>
+      <li><a href="#s3">3. How PipeUp Works</a></li>
+      <li><a href="#s4">4. Payments &amp; Fees</a></li>
+      <li><a href="#s5">5. Brand Deal Liability</a></li>
+      <li><a href="#s6">6. Content Rights</a></li>
+      <li><a href="#s7">7. Your Data &amp; Privacy</a></li>
+      <li><a href="#s8">8. Community Rules</a></li>
+      <li><a href="#s9">9. Minors Policy</a></li>
+      <li><a href="#s10">10. Termination</a></li>
+      <li><a href="#s11">11. Disclaimers</a></li>
+      <li><a href="#s12">12. Changes to Terms</a></li>
+      <li><a href="#s13">13. Contact Us</a></li>
+    </ul>
+  </aside>
 
-    <section>
-      <h2>Brand opportunities</h2>
-      <p>Brand deals, collaborations, and paid opportunities depend on fit, availability, campaign requirements, and brand approval. They are not guaranteed.</p>
-    </section>
+  <main class="content">
 
-    <section>
-      <h2>Community participation</h2>
-      <p>You agree to engage genuinely, avoid spam, and support other creators in the pipeup community.</p>
-    </section>
+    <!-- SECTION 1 -->
+    <div class="section" id="s1">
+      <div class="section-number">01</div>
+      <h2>Who We Are</h2>
+      <p>PipeUp is a free creator community platform for Indian student content creators. We are an early-stage platform operated by three founders — Nimish Agrawal, Krishna, and Adarsh — based in India. PipeUp is currently not a registered company, LLP, or formal legal entity. We operate as an informal team and are working toward formal registration.</p>
+      <p>PipeUp connects student creators with brands for paid collaborations, provides access to community workshops, and facilitates creator-to-creator collabs — all through our website PipeUp.in and our WhatsApp-first community.</p>
+      <div class="warning-box">
+        <div class="warning-label">⚠ Early Stage Notice</div>
+        <p>PipeUp is in its early stage. Processes, policies, and the platform itself are actively evolving. We will always try to communicate changes clearly and honestly.</p>
+      </div>
+    </div>
 
-    <section>
-      <h2>Feedback and iteration</h2>
-      <p>You understand that pipeup may share feedback, suggestions, or iteration requests to help improve campaign fit and content quality.</p>
-    </section>
+    <!-- SECTION 2 -->
+    <div class="section" id="s2">
+      <div class="section-number">02</div>
+      <h2>Who Can Join</h2>
+      <p>PipeUp is open to creators who produce content primarily for Indian audiences. There is no minimum follower count — we care more about niche fit and genuine intent than raw numbers.</p>
+      <h3>Eligibility — Creators</h3>
+      <ul>
+        <li>You must be a student or recent graduate creating content for Indian audiences.</li>
+        <li>You must be located in India or creating content targeted at Indian audiences.</li>
+        <li>You must provide accurate information in our intake form, including your social handles, niche, city, and contact email.</li>
+        <li>If you are under 18 years of age, you must have explicit parental or guardian consent before joining (see Section 9).</li>
+      </ul>
+      <h3>Eligibility — Brands</h3>
+      <ul>
+        <li>Brands must be legitimate businesses with real products or services.</li>
+        <li>Brands must fill out the brand intake form truthfully.</li>
+        <li>Brands must intend to pay creators fairly for their work.</li>
+        <li>PipeUp reserves the right to decline any brand that does not align with our community values.</li>
+      </ul>
+    </div>
 
-    <a class="back" href="form.html">Back to creator form</a>
+    <!-- SECTION 3 -->
+    <div class="section" id="s3">
+      <div class="section-number">03</div>
+      <h2>How PipeUp Works</h2>
+      <p>PipeUp acts as a full intermediary between creators and brands. Here is what that means in practice:</p>
+      <h3>For Creators</h3>
+      <ul>
+        <li>You submit your details via our form on PipeUp.in and are redirected to our WhatsApp community.</li>
+        <li>When a suitable brand deal becomes available, we will reach out to you directly on WhatsApp.</li>
+        <li>Matching is done manually by our team based on niche, audience fit, and brand requirements — not purely on follower count.</li>
+        <li>Joining PipeUp does <strong>not</strong> guarantee you will receive a brand deal. We make best-effort matches but cannot promise specific outcomes or timelines.</li>
+        <li>Community features (workshops, collabs) are free and open to all members.</li>
+      </ul>
+      <h3>For Brands</h3>
+      <ul>
+        <li>Brands submit a form expressing interest in working with creators.</li>
+        <li>Our team personally reads each form and manually matches brands with suitable creators.</li>
+        <li>Deals are coordinated by PipeUp, including negotiating deliverables, timelines, and payment terms.</li>
+        <li>All payments are made to PipeUp first, and we distribute the creator's share after deducting our platform fee.</li>
+      </ul>
+      <div class="highlight-box">
+        <p>PipeUp is a community-first platform. We are not a talent agency, a course platform, or a marketplace. We are a team that genuinely cares about helping student creators get real opportunities.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section" id="s4">
+      <div class="section-number">04</div>
+      <h2>Payments &amp; Fees</h2>
+      <p>PipeUp manages all financial transactions between brands and creators. Below is how payments work:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Who</th>
+            <th>What Happens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Brand → PipeUp</td>
+            <td>Brand pays the full agreed deal amount to PipeUp before the campaign begins.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>PipeUp (internal)</td>
+            <td>PipeUp deducts 30% as a platform/service fee.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>PipeUp → Creator</td>
+            <td>Creator receives 70% of the deal amount after content delivery confirmation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Payment Timeline</h3>
+      <p>Creator payments will be processed within a reasonable time after the brand confirms delivery of the agreed content. PipeUp will communicate the expected timeline clearly for each deal.</p>
+      <h3>No Hidden Charges for Creators</h3>
+      <p>Creators are never charged any upfront fee to join PipeUp or access the community. The 30% fee is only applicable when a deal is successfully made, and it is deducted from the brand payment — you always receive your share net of the fee.</p>
+      <h3>Payment Method</h3>
+      <p>Creator payments will be made via UPI, bank transfer, or any mutually agreed payment method. Creators must provide accurate payment details to receive their earnings.</p>
+      <div class="warning-box">
+        <div class="warning-label">Important</div>
+        <p>PipeUp does not charge creators any fee to join, access workshops, or participate in the community. The 30% platform fee only applies to brand deal earnings and is deducted before the creator's payment is disbursed.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section" id="s5">
+      <div class="section-number">05</div>
+      <h2>Brand Deal Liability</h2>
+      <p>Because PipeUp manages the full deal — collecting payment from the brand and paying out to the creator — we take on a meaningful level of responsibility in the process.</p>
+      <h3>PipeUp's Responsibility</h3>
+      <ul>
+        <li>PipeUp is responsible for collecting payment from brands before a deal begins. Creators will not be asked to start work until payment is secured from the brand.</li>
+        <li>If a brand fails to pay after agreeing to a deal, PipeUp will work to resolve the situation and will not require the creator to absorb that loss.</li>
+        <li>PipeUp is responsible for clearly communicating deal terms, deliverables, and deadlines to both the brand and the creator.</li>
+      </ul>
+      <h3>Creator's Responsibility</h3>
+      <ul>
+        <li>Once you accept a deal, you are expected to deliver the agreed content on time and as per the agreed brief.</li>
+        <li>If you fail to deliver without a valid reason, PipeUp reserves the right to withhold your payment, require a refund to the brand, or remove you from the platform.</li>
+        <li>You must disclose all brand partnerships on your social media as required by ASCI (Advertising Standards Council of India) guidelines. This is your legal responsibility.</li>
+      </ul>
+      <h3>Disputes</h3>
+      <p>All disputes between creators and brands will be handled by PipeUp's team as the intermediary. Our decision in such matters, while made in good faith, is final in the context of the PipeUp platform. We are not a court of law and our liability is limited to the value of the specific deal in question.</p>
+      <div class="warning-box">
+        <div class="warning-label">Limitation of Liability</div>
+        <p>PipeUp's total liability in any dispute is capped at the value of the specific brand deal involved. PipeUp is not liable for indirect losses, loss of future opportunities, or reputational damage arising from a brand deal that goes wrong.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="section" id="s6">
+      <div class="section-number">06</div>
+      <h2>Content Rights</h2>
+      <p>When you create content as part of a brand deal facilitated through PipeUp, the rights to that content are shared between you and PipeUp as follows:</p>
+      <h3>Brand Deal Content</h3>
+      <ul>
+        <li>Content created for a brand deal is owned jointly by PipeUp and the creator.</li>
+        <li>PipeUp reserves the right to use, repurpose, repost, or share this content for platform promotion, portfolio building, case studies, brand pitches, and marketing materials — without additional payment to the creator.</li>
+        <li>The brand also receives a license to use the content for the duration and scope agreed in the deal brief.</li>
+        <li>You retain the right to post the content on your own channels.</li>
+      </ul>
+      <h3>Non-Deal Content</h3>
+      <p>Any content you create independently — that is not part of a PipeUp-facilitated brand deal — remains 100% yours. PipeUp has no claim over your personal creative work.</p>
+      <h3>Attribution</h3>
+      <p>When PipeUp reposts or shares your brand deal content, we will make reasonable efforts to credit your handle. However, for aggregate case study materials or pitch decks shared privately with brands, individual creator attribution may not always be possible.</p>
+      <div class="warning-box">
+        <div class="warning-label">Summary</div>
+        <p>If PipeUp got you the deal, PipeUp can use that content. Everything else you create is fully yours.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="section" id="s7">
+      <div class="section-number">07</div>
+      <h2>Your Data &amp; Privacy</h2>
+      <p>We collect basic information from creators and brands through our intake forms. Here is exactly what we collect and why:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Collected</th>
+            <th>Why We Collect It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name &amp; Email</td>
+            <td>To contact you about deals, workshops, and community updates.</td>
+          </tr>
+          <tr>
+            <td>Social media handles</td>
+            <td>To evaluate your content, niche, and audience fit for brand matching.</td>
+          </tr>
+          <tr>
+            <td>Niche / Content category</td>
+            <td>To match you with the right brands and collabs.</td>
+          </tr>
+          <tr>
+            <td>City (not full address)</td>
+            <td>To understand geographic reach for brands and regional events.</td>
+          </tr>
+          <tr>
+            <td>Commercial rate / expectations</td>
+            <td>To ensure fair matching with brands whose budgets align.</td>
+          </tr>
+          <tr>
+            <td>Phone number</td>
+            <td>To add you to the WhatsApp community.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>WhatsApp Community</h3>
+      <p>When you join our WhatsApp community, your phone number will be visible to other members of the group. This is a feature of WhatsApp's group functionality and is not within PipeUp's control. By joining the WhatsApp group, you acknowledge and accept this visibility.</p>
+      <h3>Data Storage &amp; Sharing</h3>
+      <ul>
+        <li>Your data is stored in our form submissions and is accessible only to the three PipeUp founders.</li>
+        <li>We share your social handles, niche, and content samples (not your personal contact details) with brands strictly for the purpose of deal matching.</li>
+        <li>We do not sell your data to third parties.</li>
+        <li>We do not run targeted advertising using your data.</li>
+      </ul>
+      <h3>Your Rights</h3>
+      <p>You can request to view, update, or delete your data at any time by contacting us at the email listed in Section 13. We will respond within 7 working days.</p>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="section" id="s8">
+      <div class="section-number">08</div>
+      <h2>Community Rules</h2>
+      <p>PipeUp's WhatsApp community is meant to be a supportive, energetic, and professional space for student creators. To keep it that way, all members must follow these rules:</p>
+      <h3>What's Allowed ✅</h3>
+      <ul>
+        <li>Sharing your content, wins, and learnings.</li>
+        <li>Asking for feedback or advice on content and brand work.</li>
+        <li>Celebrating other members' achievements.</li>
+        <li>Responding to collab or deal opportunities posted by PipeUp admins.</li>
+        <li>Sharing relevant resources, tools, or opportunities that benefit the community.</li>
+      </ul>
+      <h3>What's Not Allowed ❌</h3>
+      <ul>
+        <li>Spamming the group with repeated self-promotion or promotional links.</li>
+        <li>Posting offensive, discriminatory, or abusive content of any kind.</li>
+        <li>Sharing other members' personal information without their consent.</li>
+        <li>Directly soliciting brand deals or commercial arrangements with other community members outside of PipeUp's process.</li>
+        <li>Sharing misinformation or fake opportunities.</li>
+        <li>Harassing or bullying any community member or team member.</li>
+      </ul>
+      <div class="warning-box">
+        <div class="warning-label">Enforcement</div>
+        <p>Admins (Nimish, Krishna, Adarsh) reserve the right to remove members from the community for violating these rules. Serious violations may result in permanent removal from PipeUp entirely.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 9 -->
+    <div class="section" id="s9">
+      <div class="section-number">09</div>
+      <h2>Minors Policy (Under 18)</h2>
+      <p>PipeUp is open to creators under the age of 18, but with additional requirements to protect younger members.</p>
+      <h3>Parental Consent Requirement</h3>
+      <ul>
+        <li>If you are under 18 years of age, you <strong>must</strong> have the explicit consent of a parent or legal guardian before joining PipeUp.</li>
+        <li>By submitting our form as an under-18 creator, you confirm that your parent or guardian is aware of and has approved your participation in PipeUp.</li>
+        <li>For brand deals, a parent or guardian must be informed about and approve each deal before work begins.</li>
+        <li>PipeUp reserves the right to request proof of parental consent at any time.</li>
+      </ul>
+      <h3>Payment for Minors</h3>
+      <p>Payments for deals completed by under-18 creators may be processed to a parent's or guardian's bank account or UPI ID, subject to applicable Indian laws regarding minors and contracts.</p>
+      <div class="warning-box">
+        <div class="warning-label">Legal Note</div>
+        <p>Under Indian Contract Act, 1872, minors cannot enter into binding contracts. All brand deal agreements involving creators under 18 must be co-signed or acknowledged by their parent or legal guardian for the agreement to be valid.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="section" id="s10">
+      <div class="section-number">10</div>
+      <h2>Termination &amp; Removal</h2>
+      <p>PipeUp reserves the right to remove any creator or brand from the platform at its discretion. The following are grounds for immediate removal:</p>
+      <h3>Grounds for Removal — Creators</h3>
+      <ul>
+        <li><strong>Fake or inflated followers/engagement:</strong> Using bots, buying followers, or misrepresenting your audience.</li>
+        <li><strong>Fraud:</strong> Accepting payment for a deal and not delivering, or misrepresenting your work or capabilities.</li>
+        <li><strong>Misconduct:</strong> Harassment, abuse, or any behaviour that harms other community members or the PipeUp brand.</li>
+        <li><strong>Spamming:</strong> Repeated violation of community rules even after warnings.</li>
+        <li><strong>Violating content rights:</strong> Using brand deal content in ways explicitly prohibited by the deal brief or these Terms.</li>
+        <li><strong>Breach of these Terms</strong> in any material way.</li>
+      </ul>
+      <h3>Grounds for Removal — Brands</h3>
+      <ul>
+        <li>Attempting to contact or bypass deals outside of PipeUp's process.</li>
+        <li>Non-payment or fraudulent payment behaviour.</li>
+        <li>Requesting content that is misleading, harmful, or illegal.</li>
+        <li>Treating creators disrespectfully.</li>
+      </ul>
+      <h3>Process</h3>
+      <p>For minor infractions, we will issue a warning first. For serious violations (fraud, harassment, fake followers), removal may be immediate without prior notice. If you believe you have been removed in error, you can contact us at the email in Section 13.</p>
+    </div>
+
+    <!-- SECTION 11 -->
+    <div class="section" id="s11">
+      <div class="section-number">11</div>
+      <h2>Disclaimers</h2>
+      <h3>No Guarantee of Results</h3>
+      <p>Joining PipeUp does not guarantee you will receive brand deals, workshop invitations, or collaboration opportunities. We make best-effort matches, but outcomes depend on brand requirements, your content, and timing.</p>
+      <h3>Platform Availability</h3>
+      <p>PipeUp is an early-stage platform. We do not guarantee uninterrupted availability of our website or WhatsApp community. We may pause, modify, or discontinue any feature at any time.</p>
+      <h3>Third-Party Platforms</h3>
+      <p>PipeUp uses WhatsApp (Meta) for community management. We are not responsible for changes to WhatsApp's policies or features. Instagram, YouTube, and other social platforms have their own terms that creators must comply with independently.</p>
+      <h3>Tax Responsibility</h3>
+      <p>Creators are solely responsible for declaring any income earned through PipeUp to the relevant Indian tax authorities. PipeUp does not provide tax advice and is not responsible for your tax obligations.</p>
+    </div>
+
+    <!-- SECTION 12 -->
+    <div class="section" id="s12">
+      <div class="section-number">12</div>
+      <h2>Changes to These Terms</h2>
+      <p>As PipeUp grows, these Terms may need to be updated. When we make significant changes, we will:</p>
+      <ul>
+        <li>Post the updated Terms on PipeUp.in with a new effective date.</li>
+        <li>Announce changes in the WhatsApp community with at least 7 days' notice before the changes take effect.</li>
+        <li>For major changes, send a direct message to active creators and brands.</li>
+      </ul>
+      <p>Continuing to use PipeUp after changes take effect means you accept the updated Terms. If you disagree with a change, you can leave the community and request your data be deleted.</p>
+      <div class="highlight-box">
+        <p>We will always be transparent about changes. No surprise policy shifts. That's the PipeUp promise.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 13 -->
+    <div class="section" id="s13">
+      <div class="section-number">13</div>
+      <h2>Contact Us</h2>
+      <p>Have a question about these Terms, a deal dispute, a data request, or anything else? Reach out to us directly. We read every message.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Contact Method</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Email</td>
+            <td>hello@pipeup.in</td>
+          </tr>
+          <tr>
+            <td>WhatsApp Community</td>
+            <td>Message any admin directly — Nimish, Krishna, or Adarsh</td>
+          </tr>
+          <tr>
+            <td>Website</td>
+            <td>PipeUp.in</td>
+          </tr>
+          <tr>
+            <td>Response Time</td>
+            <td>We aim to respond within 48 hours on business days</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>These Terms are governed by the laws of India. Any disputes arising from the use of PipeUp that cannot be resolved informally will be subject to the jurisdiction of courts in Bengaluru, Karnataka.</p>
+    </div>
+
   </main>
-</body>
+</div>
 
+<footer class="footer">
+  <div class="footer-brand">PipeUp</div>
+  <p>Terms &amp; Conditions — Effective May 5, 2026</p>
+  <p style="margin-top: 0.5rem;">PipeUp.in &nbsp;·&nbsp; Built for Indian student creators &nbsp;·&nbsp; Free, honest, community-first</p>
+</footer>
+
+<script>
+// Theme toggle
+(function(){
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+  updateIcon();
+  t && t.addEventListener('click', () => {
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+    updateIcon();
+  });
+})();
+
+// Active TOC link on scroll
+(function(){
+  const sections = document.querySelectorAll('.section[id]');
+  const links = document.querySelectorAll('.toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.toc a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+</body>
 </html>
