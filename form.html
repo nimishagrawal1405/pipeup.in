@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GR9TP3XJNR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GR9TP3XJNR');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>pipeup - join the community</title>
@@ -214,7 +223,7 @@
       border: 1.5px solid var(--border); border-radius: var(--r-md);
       padding: 12px 14px; outline: none;
       transition: border-color .2s, box-shadow .2s;
-      -webkit-appearance: none;
+      appearance: none;
     }
     .f-input::placeholder, .f-textarea::placeholder { color: var(--muted2) }
     .f-input:focus, .f-textarea:focus { border-color: var(--lime); box-shadow: 0 0 0 3px rgba(168,230,61,.18) }
