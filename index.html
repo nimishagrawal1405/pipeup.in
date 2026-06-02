@@ -416,6 +416,73 @@
       </div>
     </div>
   </section>
+  
+<section class="contact-section" id="contact">
+  <div class="si">
+    <div class="contact-header reveal">
+      <div class="s-eye">get in touch</div>
+      <h2 class="s-ttl">reach out to <span class="serif">our team</span></h2>
+      <p class="s-sub">have a question, a collab idea, or want to partner? we're right here.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="contact-detail reveal d1">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">email us</div>
+            <a href="mailto:founder@pipeup.in" class="contact-value">founder@pipeup.in</a>
+          </div>
+        </div>
+        <div class="contact-detail reveal d2">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.45 4.35a1 1 0 01-.23 1.02L8.5 11a16.06 16.06 0 006.5 6.5l1.95-1.95a1 1 0 011.02-.23l4.35 1.45a1 1 0 01.68.95V19a2 2 0 01-2 2C9.96 21 3 14.04 3 5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">call or whatsapp</div>
+            <a href="tel:+919045274421" class="contact-value">+91 90452 74421</a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal d2" action="https://formspree.io/f/maqzwwvj" method="POST">
+        <input type="hidden" name="_replyto" value="founder@pipeup.in">
+        <input type="hidden" name="_subject" value="New message from pipeup website">
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="cf-name">your name</label>
+            <input type="text" id="cf-name" name="name" placeholder="e.g. priya sharma" required />
+          </div>
+          <div class="cf-field">
+            <label for="cf-email">your email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="cf-field">
+          <label for="cf-subject">subject</label>
+          <input type="text" id="cf-subject" name="subject" placeholder="brand deal / collab / just saying hi" />
+        </div>
+        <div class="cf-field">
+          <label for="cf-msg">message</label>
+          <textarea id="cf-msg" name="message" rows="4" placeholder="tell us what's on your mind..." required></textarea>
+        </div>
+        <div class="cf-submit-wrap">
+          <button type="submit" id="cf-submit" class="btn btn-lime btn-lg">
+            send message
+            <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
   <section class="creators-strip" aria-label="founders">
     <div class="creators-label">founders</div>
     <div class="creators-photos">
@@ -520,6 +587,8 @@
     updateExReveal();
     document.addEventListener('scroll', updateExReveal, { passive: true });
     window.addEventListener('resize', updateExReveal);
+    
+
   </script>
 </body>
 
