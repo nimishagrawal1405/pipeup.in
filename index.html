@@ -608,7 +608,7 @@ contactForm?.addEventListener('submit', async function(e) {
 
     const json = await res.json();
 
-    if (json.ok) {
+    if (res.ok) {
       contactForm.reset();
       document.getElementById('cf-success').style.display = 'block';
       btn.closest('.cf-submit-wrap').style.display = 'none';
