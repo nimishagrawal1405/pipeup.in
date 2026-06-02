@@ -449,7 +449,7 @@
           </div>
         </div>
       </div>
-      <form class="contact-form reveal d2" action="https://formspree.io/f/maqzwwvj" method="POST">
+      <form class="contact-form reveal d2" id="contactForm" action="https://formspree.io/f/maqzwwvj">
         <input type="hidden" name="_replyto" value="founder@pipeup.in">
         <input type="hidden" name="_subject" value="New message from pipeup website">
         <div class="cf-row">
@@ -588,7 +588,36 @@
     document.addEventListener('scroll', updateExReveal, { passive: true });
     window.addEventListener('resize', updateExReveal);
     
+const contactForm = document.getElementById('contactForm');
+contactForm?.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-submit');
+  btn.disabled = true;
+  btn.innerHTML = 'sending...';
 
+  const data = new FormData(contactForm);
+
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      contactForm.reset();
+      document.getElementById('cf-success').style.display = 'block';
+      btn.closest('.cf-submit-wrap').style.display = 'none';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = 'send message <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      alert('something went wrong. please try again.');
+    }
+  } catch {
+    btn.disabled = false;
+    alert('network error. please try again.');
+  }
+});
   </script>
 </body>
 
