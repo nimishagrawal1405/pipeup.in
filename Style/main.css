@@ -1862,3 +1862,136 @@ footer {
     padding: 24px 20px;
   }
 }
+/* ── builders section ── */
+.builders-section {
+  background: var(--ink);
+  padding: 100px 5vw 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.builders-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(168,230,61,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.builders-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.builders-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.builders-title {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.builders-hl {
+  color: var(--lime);
+}
+
+.builders-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.builders-cards {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+  padding-top: 70px;
+}
+
+.builder-card {
+  width: 220px;
+  position: relative;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  overflow: visible;
+  padding-top: 90px;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;
+}
+
+.builder-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168,230,61,.4);
+}
+
+.builder-img-wrap {
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 175px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid rgba(168,230,61,.45);
+  box-shadow: 0 16px 48px rgba(0,0,0,.45);
+  background: rgba(168,230,61,.06);
+}
+
+.builder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.builder-body {
+  padding: 16px 20px 28px;
+  text-align: left;
+}
+
+.builder-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.builder-role {
+  font-size: 13px;
+  color: var(--lime);
+  font-weight: 500;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .builders-cards {
+    gap: 90px;
+    padding-top: 75px;
+  }
+  .builder-card {
+    width: 175px;
+  }
+  .builder-img-wrap {
+    width: 118px;
+    height: 148px;
+    top: -58px;
+  }
+  .builders-title {
+  font-size: clamp(48px, 7vw, 90px);
+  }
+}
