@@ -1,168 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GR9TP3XJNR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GR9TP3XJNR');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>pipeup × brands</title>
   <link rel="icon" type="image/png" href="Public/photos/logo.png">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Style/brand.css">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E8CLQ8Q6PE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-E8CLQ8Q6PE');
-</script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzDfUR-6GOFNfg3Wz1-oUfKNiGevq5L4",
+      authDomain: "pipeup-9eeba.firebaseapp.com",
+      projectId: "pipeup-9eeba",
+      storageBucket: "pipeup-9eeba.firebasestorage.app",
+      messagingSenderId: "1097020919727",
+      appId: "1:1097020919727:web:b62b84e1a9d0028426695a"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
 
 <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
 <script>
-  const lenis = new Lenis({
-    duration: 1.1,
-    smoothWheel: true,
-    touchMultiplier: 1,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
+  const lenis = new Lenis({ duration: 1.1, smoothWheel: true, touchMultiplier: 1 });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 </script>
 
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="index.html" class="logo">
-      <span class="logo-dot"></span>
-      pipeup
-    </a>
+    <a href="index.html" class="logo"><span class="logo-dot"></span>pipeup</a>
     <a href="index.html" class="nav-back">← back to main</a>
   </nav>
 
-  <!-- ══════════════════════════════════════
-     SECTION 1 - HONEST INTENTIONS
-══════════════════════════════════════ -->
+  <!-- SECTION 1 - HONEST INTENTIONS (unchanged from your original) -->
   <section class="intro-section">
     <div class="grid-bg"></div>
     <div class="intro-glow"></div>
-
     <div class="intro-inner">
-
-      <!-- LEFT - honest talk -->
       <div class="intro-left">
-        <div class="intro-tag">
-          <span class="tag-dot"></span>
-          for brands &amp; companies
-        </div>
-
-        <h1 class="intro-h">
-          we're going to be<br><em>completely honest</em><br>with you.
-        </h1>
-
+        <div class="intro-tag"><span class="tag-dot"></span>for brands &amp; companies</div>
+        <h1 class="intro-h">we're going to be<br><em>completely honest</em><br>with you.</h1>
         <div class="honest-list">
-
           <div class="honest-item">
             <div class="honest-icon">🌱</div>
             <div class="honest-text">
               <div class="honest-title">we're early. very early.</div>
-              <div class="honest-body">pipeup is just getting started. we don't have 500 brands or a polished platform
-                yet. what we <strong>do</strong> have is a growing community of real creators who are hungry, talented,
-                and underrepresented.</div>
+              <div class="honest-body">pipeup is just getting started. we don't have 500 brands or a polished platform yet. what we <strong>do</strong> have is a growing community of real creators who are hungry, talented, and underrepresented.</div>
             </div>
           </div>
-
           <div class="honest-item">
             <div class="honest-icon">🤝</div>
             <div class="honest-text">
               <div class="honest-title">this is manual, for now.</div>
-              <div class="honest-body">when you fill this form, a real human from our team reads it. we personally make
-                the intro between you and creators. <strong>no algorithm. no automation.</strong> just us, doing the
-                matching ourselves.</div>
+              <div class="honest-body">when you fill this form, a real human from our team reads it. we personally make the intro between you and creators. <strong>no algorithm. no automation.</strong> just us, doing the matching ourselves.</div>
             </div>
           </div>
-
           <div class="honest-item">
             <div class="honest-icon">🎯</div>
             <div class="honest-text">
               <div class="honest-title">we're not an agency. we don't want to be.</div>
-              <div class="honest-body">we're building a community - and right now, <strong>we want to find brands that
-                  genuinely want to work with up-and-coming creators</strong>, not just buy impressions.</div>
+              <div class="honest-body">we're building a community - and right now, <strong>we want to find brands that genuinely want to work with up-and-coming creators</strong>, not just buy impressions.</div>
             </div>
           </div>
-
           <div class="honest-item">
             <div class="honest-icon">💸</div>
             <div class="honest-text">
               <div class="honest-title">what's in it for you?</div>
-              <div class="honest-body">access to creators before everyone else does. raw, authentic content.
-                <strong>lower cost, higher trust.</strong> gen-Z audiences that can actually tell when a brand cares -
-                and when it doesn't.</div>
+              <div class="honest-body">access to creators before everyone else does. raw, authentic content. <strong>lower cost, higher trust.</strong> gen-Z audiences that can actually tell when a brand cares - and when it doesn't.</div>
             </div>
           </div>
-
           <div class="honest-item">
             <div class="honest-icon">📬</div>
             <div class="honest-text">
               <div class="honest-title">we'll get back to you within 48 hours.</div>
-              <div class="honest-body">not an automated email. someone on our team will actually respond. if we don't
-                think we're a good fit right now, <strong>we'll tell you that too.</strong> no ghosting.</div>
+              <div class="honest-body">not an automated email. someone on our team will actually respond. if we don't think we're a good fit right now, <strong>we'll tell you that too.</strong> no ghosting.</div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <!-- RIGHT - manifesto card -->
       <div class="manifesto-card" id="mfCard">
         <div class="mf-eyebrow">why we built this</div>
-        <div class="mf-quote">
-          "creators keep getting underpaid. brands keep wasting money on wrong fits. we're fixing the middle."
-        </div>
+        <div class="mf-quote">"creators keep getting underpaid. brands keep wasting money on wrong fits. we're fixing the middle."</div>
         <div class="mf-divider"></div>
-
-        <div class="mf-item">
-          <div class="mf-check">✓</div>
-          <div class="mf-label">we match you with creators based on <strong>niche, not numbers</strong></div>
-        </div>
-        <div class="mf-item">
-          <div class="mf-check">✓</div>
-          <div class="mf-label">every creator on pipeup is <strong>vetted by us</strong> personally</div>
-        </div>
-        <div class="mf-item">
-          <div class="mf-check">✓</div>
-          <div class="mf-label">no retainers, no commitments - <strong>try one collab first</strong></div>
-        </div>
-        <div class="mf-item">
-          <div class="mf-check">✓</div>
-          <div class="mf-label">early brand partners help <strong>shape how this works</strong></div>
-        </div>
-
+        <div class="mf-item"><div class="mf-check">✓</div><div class="mf-label">we match you with creators based on <strong>niche, not numbers</strong></div></div>
+        <div class="mf-item"><div class="mf-check">✓</div><div class="mf-label">every creator on pipeup is <strong>vetted by us</strong> personally</div></div>
+        <div class="mf-item"><div class="mf-check">✓</div><div class="mf-label">no retainers, no commitments - <strong>try one collab first</strong></div></div>
+        <div class="mf-item"><div class="mf-check">✓</div><div class="mf-label">early brand partners help <strong>shape how this works</strong></div></div>
         <div class="mf-founder">
           <div class="mf-avatar">👋</div>
-          <div class="mf-who">
-            <strong>the pipeup team</strong>
-            we read every single message. promise.
-          </div>
+          <div class="mf-who"><strong>the pipeup team</strong>we read every single message. promise.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 - REAL FORM (NEW) -->
+  <section class="form-section" id="brandFormSection">
+    <div class="form-section-inner">
+      <div class="form-context">
+        <div class="form-eyebrow">join as a brand</div>
+        <h2 class="form-h">tell us what you're<br><em>building</em>.</h2>
+        <p class="form-sub">two minutes. no fluff. we personally read every submission and reach out within 48 hours.</p>
+        <div class="context-pills">
+          <div class="context-pill"><span class="ctx-dot"></span>niche-based matching</div>
+          <div class="context-pill"><span class="ctx-dot"></span>manually vetted creators</div>
+          <div class="context-pill"><span class="ctx-dot"></span>no retainers required</div>
         </div>
       </div>
 
+      <form class="brand-form" id="brandForm">
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="bf-brand">brand / company name <span class="req">*</span></label>
+            <input type="text" id="bf-brand" name="brandName" placeholder="e.g. nova skincare" required>
+          </div>
+          <div class="form-row">
+            <label for="bf-contact">your name <span class="req">*</span></label>
+            <input type="text" id="bf-contact" name="contactName" placeholder="your full name" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="bf-email">email <span class="req">*</span></label>
+            <input type="email" id="bf-email" name="email" placeholder="you@brand.com" required>
+          </div>
+          <div class="form-row">
+            <label for="bf-website">website / instagram</label>
+            <input type="url" id="bf-website" name="website" placeholder="brand.com or instagram.com/brand">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="bf-niche">which creator niches are you looking for? <span class="req">*</span></label>
+          <select id="bf-niche" name="niche" required>
+            <option value="" disabled selected>select a niche</option>
+            <option>lifestyle</option><option>tech</option><option>gaming</option>
+            <option>beauty</option><option>fashion</option><option>fitness</option>
+            <option>food &amp; cooking</option><option>travel</option><option>finance</option>
+            <option>education</option><option>music</option><option>comedy</option>
+            <option>vlogging</option><option>photography</option><option>art &amp; design</option>
+            <option>sports</option><option>other</option>
+          </select>
+        </div>
+
+        <div class="form-divider"></div>
+        <div class="form-section-label">budget per deal</div>
+        <div class="budget-grid">
+          <label class="budget-pill"><input type="radio" name="budget" value="under-5k"><span class="budget-label">under ₹5,000</span></label>
+          <label class="budget-pill"><input type="radio" name="budget" value="5k-15k"><span class="budget-label">₹5,000 - ₹15,000</span></label>
+          <label class="budget-pill"><input type="radio" name="budget" value="15k-50k"><span class="budget-label">₹15,000 - ₹50,000</span></label>
+          <label class="budget-pill"><input type="radio" name="budget" value="50k-plus"><span class="budget-label">₹50,000+</span></label>
+        </div>
+
+        <div class="form-divider"></div>
+        <div class="form-row">
+          <label for="bf-message">tell us about your campaign <span class="req">*</span></label>
+          <textarea id="bf-message" name="message" placeholder="what are you building, what do you need from creators, and what does success look like for this collab..." required></textarea>
+        </div>
+
+        <label class="honest-check">
+          <input type="checkbox" id="bf-honest" required>
+          <span class="hc-box"></span>
+          <span class="hc-text"><strong>I understand this is early-stage and manual.</strong> A real Pipeup team member will review this and reach out directly — no automated matching yet.</span>
+        </label>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-submit" id="bfSubmit">
+            <span class="btn-lbl">submit &amp; get matched</span>
+          </button>
+          <p class="submit-note">we respond within 48 hours. no spam, no auto-replies.</p>
+        </div>
+
+        <div class="form-success" id="bfSuccess">
+          <div class="success-icon">🎉</div>
+          <div class="success-title">got it!</div>
+          <p class="success-sub">a real human from pipeup will reach out to you within 48 hours. thanks for backing student creators.</p>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -171,29 +194,22 @@
     <div class="join-card reveal">
       <div class="join-eyebrow">ready when you are</div>
       <h2 class="join-title">join us as an <em>early brand partner</em></h2>
-      <p class="join-sub">tell us what you are building, who you want to reach, and we will help you meet creators who
-        can make the match feel real.</p>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=founder@pipeup.in&su=Join%20pipeup%20as%20a%20brand" target="_blank" rel="noopener noreferrer" class="btn-join">join us
-  <span>→</span></a>
+      <p class="join-sub">tell us what you are building, who you want to reach, and we will help you meet creators who can make the match feel real.</p>
+      <a href="#brandFormSection" class="btn-join">fill the form above <span>↑</span></a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">pipeup.in</div>
     <a href="index.html" class="footer-link">← back to home</a>
   </footer>
 
   <script>
-    /* ── reveal on scroll ── */
     const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* ── honest list stagger ── */
     const io2 = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -206,36 +222,51 @@
     }, { threshold: 0.1 });
     io2.observe(document.querySelector('.honest-list'));
 
-    /* ── manifesto card ── */
     const io3 = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io3.unobserve(e.target); } });
     }, { threshold: 0.1 });
     io3.observe(document.getElementById('mfCard'));
 
-    /* ── checkbox toggle ── */
-    document.querySelectorAll('.check-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const cb = item.querySelector('input[type=checkbox]');
-        cb.checked = !cb.checked;
-      });
-    });
+    /* ── brand form submit → firestore ── */
+    const brandForm = document.getElementById('brandForm');
+    const bfSubmit = document.getElementById('bfSubmit');
 
-    /* ── budget pill toggle ── */
-    document.querySelectorAll('.budget-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        const r = pill.querySelector('input[type=radio]');
-        r.checked = true;
-      });
-    });
+    brandForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
 
-    /* ── honest check ── */
-    document.querySelector('.honest-check')?.addEventListener('click', function () {
-      const cb = this.querySelector('input[type=checkbox]');
-      cb.checked = !cb.checked;
-    });
+      const budgetInput = brandForm.querySelector('input[name="budget"]:checked');
+      if (!budgetInput) {
+        alert('please select a budget range');
+        return;
+      }
 
-    /* ── submit ── */
+      bfSubmit.disabled = true;
+      bfSubmit.querySelector('.btn-lbl').textContent = 'sending...';
+
+      const data = {
+        brandName: document.getElementById('bf-brand').value.trim(),
+        contactName: document.getElementById('bf-contact').value.trim(),
+        email: document.getElementById('bf-email').value.trim(),
+        website: document.getElementById('bf-website').value.trim(),
+        niche: document.getElementById('bf-niche').value,
+        budget: budgetInput.value,
+        message: document.getElementById('bf-message').value.trim(),
+        submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        source: 'brand-form-v1',
+        status: 'new'
+      };
+
+      try {
+        await db.collection('brandapplications').add(data);
+        brandForm.style.display = 'none';
+        document.getElementById('bfSuccess').style.display = 'block';
+      } catch (err) {
+        console.error('Firebase error:', err);
+        bfSubmit.disabled = false;
+        bfSubmit.querySelector('.btn-lbl').textContent = 'submit & get matched';
+        alert('something went wrong. please check your connection and try again.');
+      }
+    });
   </script>
 </body>
-
 </html>

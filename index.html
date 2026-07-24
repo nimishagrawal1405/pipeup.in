@@ -8,6 +8,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+
   gtag('config', 'G-GR9TP3XJNR');
 </script>
   <meta charset="UTF-8">
@@ -30,9 +31,28 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+
   gtag('config', 'G-E8CLQ8Q6PE');
 </script>
+
+
+  <!-- Firebase (for live creator counter) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzDfUR-6GOFNfg3Wz1-oUfKNiGevq5L4",
+      authDomain: "pipeup-9eeba.firebaseapp.com",
+      projectId: "pipeup-9eeba",
+      storageBucket: "pipeup-9eeba.firebasestorage.app",
+      messagingSenderId: "1097020919727",
+      appId: "1:1097020919727:web:b62b84e1a9d0028426695a"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
+
 
 <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
 <script>
@@ -42,13 +62,16 @@
     touchMultiplier: 1,
   });
 
+
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
 
+
   requestAnimationFrame(raf);
 </script>
+
 
 <body>
   <nav>
@@ -81,6 +104,19 @@
       <div class="mesh-orb mo2"></div>
       <div class="mesh-orb mo3"></div>
     </div>
+
+    <!-- NEW: 3D floating decorative elements (fills empty left/right hero space) -->
+    <div class="hero-3d">
+      <div class="h3d-card h3d-1"><div class="h3d-inner"><div class="h3d-emoji">&#127909;</div><div class="h3d-txt">content</div></div></div>
+      <div class="h3d-card h3d-2"><div class="h3d-inner"><div class="h3d-emoji">&#128176;</div><div class="h3d-txt">brand deal</div></div></div>
+      <div class="h3d-card h3d-3"><div class="h3d-inner"><div class="h3d-emoji">&#128200;</div><div class="h3d-txt">+12k reach</div></div></div>
+      <div class="h3d-card h3d-4"><div class="h3d-inner"><div class="h3d-emoji">&#129309;</div><div class="h3d-txt">collab</div></div></div>
+      <div class="h3d-ring h3d-ring1"></div>
+      <div class="h3d-ring h3d-ring2"></div>
+      <div class="h3d-dots h3d-dots1"></div>
+      <div class="h3d-dots h3d-dots2"></div>
+    </div>
+
     <div class="hero-inner">
       <div class="hero-left">
         <div class="hero-eyebrow"><span class="badge-dot"></span>building India's biggest creator community</div>
@@ -101,6 +137,20 @@
                 stroke-linejoin="round" />
             </svg></a>
         </div>
+
+
+        <!-- LIVE PROOF STRIP -->
+        <div class="proof-strip" id="proofStrip">
+          <div class="proof-count-badge">
+            <span class="proof-count-num" id="creatorCount">1</span>
+            <span class="proof-count-txt">creators onboard</span>
+          </div>
+          <div class="proof-cards-wrap">
+            <div class="proof-cards-track" id="recentCreators"></div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </section>
@@ -124,6 +174,8 @@
       <div class="m-item"><span class="m-dot"></span>whatsapp group access</div>
     </div>
   </div>
+
+
   <section class="problem-section" id="problem">
     <div class="si">
       <div class="problem-header reveal">
@@ -146,8 +198,8 @@
               <rect x="128" y="54" width="64" height="34" rx="2" fill="rgba(255,255,255,.03)"
                 stroke="rgba(255,255,255,.06)" stroke-width=".5" />
               <text x="160" y="76" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="18"
-                fill="rgba(255,255,255,.15)">📸</text>
-              <text x="132" y="102" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">♡ 3
+                fill="rgba(255,255,255,.15)">&#128248;</text>
+              <text x="132" y="102" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">&#9825; 3
                 likes</text>
               <rect x="128" y="106" width="40" height="1.5" rx="1" fill="rgba(255,255,255,.08)" />
               <rect x="128" y="110" width="30" height="1.5" rx="1" fill="rgba(255,255,255,.06)" />
@@ -175,7 +227,7 @@
             </div>
           </div>
           <div class="struggle-overlay">
-            <div class="struggle-overlay-emoji">😶</div>
+            <div class="struggle-overlay-emoji">&#128566;</div>
             <div class="struggle-overlay-text">"i spent 6 hours editing that reel. got 3 likes. one was my mom and one
               was mine by accident."</div>
           </div>
@@ -206,9 +258,9 @@
                 stroke="rgba(255,100,100,.1)" stroke-width=".5" />
               <text x="80" y="148" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,100,100,.5)">Brand D:
                 (seen, no reply)</text>
-              <text x="242" y="65" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
-              <text x="242" y="93" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
-              <text x="242" y="121" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">✕</text>
+              <text x="242" y="65" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">&#10005;</text>
+              <text x="242" y="93" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">&#10005;</text>
+              <text x="242" y="121" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,100,100,.5)">&#10005;</text>
             </svg>
           </div>
           <div class="struggle-emotion">the rejection loop</div>
@@ -219,7 +271,7 @@
             </div>
           </div>
           <div class="struggle-overlay">
-            <div class="struggle-overlay-emoji">🥲</div>
+            <div class="struggle-overlay-emoji">&#129398;</div>
             <div class="struggle-overlay-text">"i sent 40 cold DMs. got 2 replies. both said 'not right now'. i was
               ready. they just didn't care."</div>
           </div>
@@ -264,7 +316,7 @@
               hope.</div>
           </div>
           <div class="struggle-overlay">
-            <div class="struggle-overlay-emoji">😮‍💨</div>
+            <div class="struggle-overlay-emoji">&#128557;&#8205;&#128168;</div>
             <div class="struggle-overlay-text">"i've been creating for a year and still don't know if i'm doing it
               right. i just needed someone who actually gets it."</div>
           </div>
@@ -328,14 +380,14 @@
       <h2 class="s-ttl">three steps.<br><span class="serif">that's all.</span></h2>
       <div class="steps-row">
         <div class="step-item reveal d1">
-          <div class="step-arrow">→</div>
+          <div class="step-arrow">&rarr;</div>
           <div class="step-num">1</div>
           <div class="step-ttl">fill the form</div>
           <div class="step-bdy">quick 2-min onboarding. tell us what you create, your platform, and what you're looking
             for.</div>
         </div>
         <div class="step-item reveal d2">
-          <div class="step-arrow">→</div>
+          <div class="step-arrow">&rarr;</div>
           <div class="step-num">2</div>
           <div class="step-ttl">join the whatsapp group</div>
           <div class="step-bdy">after filling the form, you get redirected straight to our whatsapp group - where brand
@@ -416,7 +468,8 @@
       </div>
     </div>
   </section>
-  
+
+
 <section class="contact-section" id="contact">
   <div class="si">
     <div class="contact-header reveal">
@@ -478,9 +531,10 @@
             </svg>
           </button>
         </div>
-        <p class="cf-success" id="cf-success" style="display:none;">✓ message sent! we'll get back to you soon.</p>
+        <p class="cf-success" id="cf-success" style="display:none;">&#10003; message sent! we'll get back to you soon.</p>
       </form>
-    
+
+
     </div>
   </div>
 </section>
@@ -490,7 +544,7 @@
     <div class="builders-header">
       <div class="s-eye" style="color:rgba(168,230,61,.8);justify-content:center;">the internal force</div>
      <h2 class="builders-title">MEET PIPEUP<br><span class="builders-hl">BUILDERS</span></h2>
-      <p class="builders-sub">the people behind the scenes — building with love, serving creators.</p>
+      <p class="builders-sub">the people behind the scenes &mdash; building with love, serving creators.</p>
     </div>
     <div class="builders-cards">
       <div class="builder-card">
@@ -582,7 +636,7 @@
         target="_blank" rel="noopener">instagram</a><a href="https://www.linkedin.com/company/pipeup-in" target="_blank"
         rel="noopener">linkedin</a>
     </div>
-    <div class="footer-copy">© 2026 pipeup</div>
+    <div class="footer-copy">&copy; 2026 pipeup</div>
   </footer>
   <script>
     const menuBtn = document.querySelector('.nav-menu-btn');
@@ -603,6 +657,8 @@
       if (window.innerWidth > 1040) closeMobileMenu();
     });
 
+
+
     const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .08 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     const exSec = document.querySelector('#exaggerate');
@@ -618,7 +674,8 @@
     updateExReveal();
     document.addEventListener('scroll', updateExReveal, { passive: true });
     window.addEventListener('resize', updateExReveal);
-    
+
+
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -626,7 +683,11 @@ contactForm?.addEventListener('submit', async function(e) {
   btn.disabled = true;
   btn.innerHTML = 'sending...';
 
+
+
   const data = new FormData(contactForm);
+
+
 
   try {
     const res = await fetch(contactForm.action, {
@@ -635,7 +696,11 @@ contactForm?.addEventListener('submit', async function(e) {
       headers: { 'Accept': 'application/json' }
     });
 
+
+
     const json = await res.json();
+
+
 
     if (res.ok) {
       contactForm.reset();
@@ -651,8 +716,78 @@ contactForm?.addEventListener('submit', async function(e) {
   }
 });
 
+
+/* ══════════════ LIVE CREATOR COUNTER + PROOF CARDS (UPGRADED: 1-to-current smooth count-up) ══════════════ */
+db.collection('creator_applications').onSnapshot((snap) => {
+  animateCount(document.getElementById('creatorCount'), snap.size);
+});
+
+let countAnimated = false;
+function animateCount(el, target) {
+  const duration = 1400;
+  const start = performance.now();
+  const from = countAnimated ? (parseInt(el.textContent) || 1) : 1;
+  countAnimated = true;
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = Math.round(from + (target - from) * eased);
+    el.textContent = val;
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = target;
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+
+db.collection('creator_applications')
+  .orderBy('submittedAt', 'desc')
+  .limit(8)
+  .onSnapshot((snap) => {
+    const track = document.getElementById('recentCreators');
+    const cards = snap.docs.map((doc, i) => {
+      const d = doc.data();
+      const firstName = (d.name || 'creator').split(' ')[0];
+      const niche = (d.niche && d.niche[0]) ? d.niche[0] : 'creator';
+      const city = d.city || '';
+      const ig = d.igLink ? d.igLink.trim() : '';
+      const igUrl = ig
+        ? (ig.startsWith('http') ? ig : `https://instagram.com/${ig.replace('@','')}`)
+        : '';
+
+
+      return `
+        <div class="proof-card${igUrl ? ' has-link' : ''}" style="animation-delay:${i * 0.08}s" ${igUrl ? `data-ig="${igUrl}" role="button" tabindex="0" aria-label="view ${firstName}'s instagram"` : ''}>
+          <div class="pc-badge">&#10003;</div>
+          <div class="pc-avatar">${firstName.charAt(0).toUpperCase()}</div>
+          <div class="pc-name">${firstName}</div>
+          <div class="pc-niche">${niche}</div>
+          <div class="pc-city">${city}</div>
+          ${igUrl ? '<div class="pc-hint">tap to view &rarr;</div>' : ''}
+        </div>`;
+    }).join('');
+    track.innerHTML = cards + cards;
+
+
+    track.querySelectorAll('.proof-card.has-link').forEach(card => {
+      const url = card.getAttribute('data-ig');
+      card.addEventListener('click', () => window.open(url, '_blank', 'noopener'));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') window.open(url, '_blank', 'noopener');
+      });
+    });
+  });
+
+
+
  </script>
 </body>
 
-</html>
 
+
+</html>
