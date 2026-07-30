@@ -1659,3 +1659,24 @@ footer {
   .proof-cards-wrap { max-width: 300px; }
   .proof-count-num { min-width: 44px; height: 44px; font-size: 19px; }
 }
+.btn-event{
+  background: linear-gradient(90deg, #ffe59a, #ffd54f);
+  color: #1a1a1a;
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+.btn-event:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(255, 213, 79, 0.28);
+}@media (max-width: 768px){
+  .hero-ctas{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-ctas .btn{
+    width: 100%;
+    justify-content: center;
+  }
+}
