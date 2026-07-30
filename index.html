@@ -9,6 +9,7 @@
   gtag('js', new Date());
 
 
+
   gtag('config', 'G-GR9TP3XJNR');
 </script>
   <meta charset="UTF-8">
@@ -24,6 +25,7 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="Style/main.css">
+  <link rel="stylesheet" href="Style/event-style.css">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8CLQ8Q6PE"></script>
 <script>
@@ -32,8 +34,10 @@
   gtag('js', new Date());
 
 
+
   gtag('config', 'G-E8CLQ8Q6PE');
 </script>
+
 
 
   <!-- Firebase (for live creator counter) -->
@@ -54,6 +58,7 @@
 </head>
 
 
+
 <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
 <script>
   const lenis = new Lenis({
@@ -63,14 +68,17 @@
   });
 
 
+
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
 
 
+
   requestAnimationFrame(raf);
 </script>
+
 
 
 <body>
@@ -97,13 +105,18 @@
     <a href="#how">how it works</a>
     <a href="form.html" target="_blank" rel="noopener" class="mobile-cta mobile-creator">i'm a creator</a>
     <a href="brand.html" target="_blank" rel="noopener" class="mobile-cta mobile-brand">i'm a brand</a>
+    <a href="event.html" class="mobile-cta mobile-event">creator carnival &#127881;</a>
   </div>
+
+  <!-- ===== EVENT TEASER STRIP (Creator Carnival) ===== -->
+ 
   <section class="hero" id="home">
     <div class="hero-mesh">
       <div class="mesh-orb mo1"></div>
       <div class="mesh-orb mo2"></div>
       <div class="mesh-orb mo3"></div>
     </div>
+
 
     <!-- NEW: 3D floating decorative elements (fills empty left/right hero space) -->
     <div class="hero-3d">
@@ -115,11 +128,22 @@
       <div class="h3d-ring h3d-ring2"></div>
       <div class="h3d-dots h3d-dots1"></div>
       <div class="h3d-dots h3d-dots2"></div>
+
+      <!-- ===== FLOATING EVENT BADGE ===== -->
+      <a href="event.html" class="event-hero-badge" aria-label="creator carnival - 1 september">
+        <span class="ehb-live"><span class="ehb-pulse"></span>event</span>
+        <span class="ehb-title">creator carnival</span>
+        <span class="ehb-meta">1 sept &middot; 50 seats</span>
+        <span class="ehb-arrow">&rarr;</span>
+      </a>
+      
     </div>
+
 
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow"><span class="badge-dot"></span>building India's biggest creator community</div>
+        <div class="hero-eyebrow">
+          <span class="badge-dot"></span>building India's biggest creator community</div>
         <h1 class="hero-h1">be one of
           <br>the <span class="italic-word">first 500</span>
         </h1>
@@ -139,6 +163,7 @@
         </div>
 
 
+
         <!-- LIVE PROOF STRIP -->
         <div class="proof-strip" id="proofStrip">
           <div class="proof-count-badge">
@@ -149,6 +174,7 @@
             <div class="proof-cards-track" id="recentCreators"></div>
           </div>
         </div>
+
 
 
       </div>
@@ -174,6 +200,7 @@
       <div class="m-item"><span class="m-dot"></span>whatsapp group access</div>
     </div>
   </div>
+
 
 
   <section class="problem-section" id="problem">
@@ -470,6 +497,7 @@
   </section>
 
 
+
 <section class="contact-section" id="contact">
   <div class="si">
     <div class="contact-header reveal">
@@ -533,6 +561,7 @@
         </div>
         <p class="cf-success" id="cf-success" style="display:none;">&#10003; message sent! we'll get back to you soon.</p>
       </form>
+
 
 
     </div>
@@ -659,6 +688,7 @@
 
 
 
+
     const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .08 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     const exSec = document.querySelector('#exaggerate');
@@ -676,6 +706,7 @@
     window.addEventListener('resize', updateExReveal);
 
 
+
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -685,7 +716,9 @@ contactForm?.addEventListener('submit', async function(e) {
 
 
 
+
   const data = new FormData(contactForm);
+
 
 
 
@@ -698,7 +731,9 @@ contactForm?.addEventListener('submit', async function(e) {
 
 
 
+
     const json = await res.json();
+
 
 
 
@@ -717,10 +752,12 @@ contactForm?.addEventListener('submit', async function(e) {
 });
 
 
+
 /* ══════════════ LIVE CREATOR COUNTER + PROOF CARDS (UPGRADED: 1-to-current smooth count-up) ══════════════ */
 db.collection('creator_applications').onSnapshot((snap) => {
   animateCount(document.getElementById('creatorCount'), snap.size);
 });
+
 
 let countAnimated = false;
 function animateCount(el, target) {
@@ -728,6 +765,7 @@ function animateCount(el, target) {
   const start = performance.now();
   const from = countAnimated ? (parseInt(el.textContent) || 1) : 1;
   countAnimated = true;
+
 
   function tick(now) {
     const elapsed = now - start;
@@ -743,6 +781,7 @@ function animateCount(el, target) {
   }
   requestAnimationFrame(tick);
 }
+
 
 
 db.collection('creator_applications')
@@ -761,6 +800,7 @@ db.collection('creator_applications')
         : '';
 
 
+
       return `
         <div class="proof-card${igUrl ? ' has-link' : ''}" style="animation-delay:${i * 0.08}s" ${igUrl ? `data-ig="${igUrl}" role="button" tabindex="0" aria-label="view ${firstName}'s instagram"` : ''}>
           <div class="pc-badge">&#10003;</div>
@@ -774,6 +814,7 @@ db.collection('creator_applications')
     track.innerHTML = cards + cards;
 
 
+
     track.querySelectorAll('.proof-card.has-link').forEach(card => {
       const url = card.getAttribute('data-ig');
       card.addEventListener('click', () => window.open(url, '_blank', 'noopener'));
@@ -785,8 +826,10 @@ db.collection('creator_applications')
 
 
 
+
  </script>
 </body>
+
 
 
 

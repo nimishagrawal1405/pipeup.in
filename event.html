@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GR9TP3XJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GR9TP3XJNR');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>creator carnival - pipeup</title>
+  <link rel="icon" type="image/png" href="./Public/photos/logo.png">
+  <meta property="og:image" content="https://pipeup.in/Public/photos/preview.jpeg">
+  <meta property="og:title" content="creator carnival by pipeup">
+  <meta property="og:description" content="India's student creators meet up - games, content, collabs. 1 September. 50 seats only.">
+  <meta property="og:url" content="https://pipeup.in/event.html">
+  <meta property="og:type" content="website">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="Style/main.css">
+  <link rel="stylesheet" href="Style/event-style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzDfUR-6GOFNfg3Wz1-oUfKNiGevq5L4",
+      authDomain: "pipeup-9eeba.firebaseapp.com",
+      projectId: "pipeup-9eeba",
+      storageBucket: "pipeup-9eeba.firebasestorage.app",
+      messagingSenderId: "1097020919727",
+      appId: "1:1097020919727:web:b62b84e1a9d0028426695a"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+</head>
+
+<body class="carnival-page">
+
+  <nav class="carn-nav">
+    <a href="index.html" class="carn-nav-logo">pipe<em>up</em></a>
+    <a href="index.html" class="carn-nav-back">&larr; back to home</a>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="carnival-hero">
+    <div class="carn-glow carn-glow-1"></div>
+    <div class="carn-glow carn-glow-2"></div>
+    <div class="carn-glow carn-glow-3"></div>
+
+    <div class="carn-wrap">
+      <div class="carn-eyebrow">pipeup presents</div>
+      <h1 class="carn-h1"><span class="carn-grad">creator</span><br><span class="carn-serif">carnival</span></h1>
+      <p class="carn-sub">A creator first meetup built for people who are actively making, posting, and building. Expect meaningful conversations,
+         live content moments, and a room full of ambitious creators without the usual fluff.</p>
+
+      <div class="carn-countdown" id="countdown">
+        <div class="cd-cell"><div class="cd-num" id="cdDays">--</div><div class="cd-lbl">days</div></div>
+        <div class="cd-cell"><div class="cd-num" id="cdHours">--</div><div class="cd-lbl">hours</div></div>
+        <div class="cd-cell"><div class="cd-num" id="cdMins">--</div><div class="cd-lbl">mins</div></div>
+        <div class="cd-cell"><div class="cd-num" id="cdSecs">--</div><div class="cd-lbl">secs</div></div>
+      </div>
+
+      <div class="carn-pills">
+        <div class="carn-pill">&#128197; <strong>1 september</strong></div>
+        <div class="carn-pill">&#128205; venue <strong>announcing soon</strong></div>
+        <div class="carn-pill">&#128101; only <strong>50 seats</strong></div>
+      </div>
+
+      <div class="carn-ctas">
+        <a href="#register" class="carn-btn carn-btn-primary">get early access
+          <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#sponsor" class="carn-btn carn-btn-ghost">sponsor this event</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ VIBE ══════════ -->
+  <section class="carn-section">
+    <div class="carn-wrap">
+      <div class="c-reveal">
+        <div class="carn-s-eye">the vibe</div>
+        <h2 class="carn-s-ttl">one day built for <span class="carn-serif">creator energy</span></h2>
+<p class="carn-s-sub">No stiff panels. No awkward networking circles. Just a high-energy room with 
+  creators, cameras, ideas, and enough momentum to spark real content, real chemistry, and real 
+  collaborations.</p>
+      </div>
+
+      <div class="vibe-grid">
+        <div class="vibe-card c-reveal">
+          <div class="vibe-emoji">&#127918;</div>
+          <div class="vibe-ttl">games &amp; challenges</div>
+          <div class="vibe-bdy">Fast-paced creator games, playful competition 
+            designed to get people talking, creating, and loosening up in the first hour.</div>
+        </div>
+        <div class="vibe-card c-reveal">
+          <div class="vibe-emoji">&#127909;</div>
+          <div class="vibe-ttl">on-spot content shoot</div>
+          <div class="vibe-bdy">Content friendly setups that help
+             creators capture strong photos, reels, and social assets while the event is still happening.</div>
+        </div>
+        <div class="vibe-card c-reveal">
+          <div class="vibe-emoji">&#129309;</div>
+          <div class="vibe-ttl">real collabs</div>
+         <div class="vibe-bdy">Meet creators across niches and turn
+           casual conversations into future shoots, and collabs that actually move forward.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SPONSOR ══════════ -->
+  <section class="carn-section" id="sponsor">
+    <div class="carn-wrap">
+      <div class="c-reveal">
+        <div class="carn-s-eye">for brands</div>
+<h2 class="carn-s-ttl">put your brand inside the <span class="carn-serif">creator conversation</span></h2>
+<p class="carn-s-sub">Get in front of a highly engaged room of emerging creators through experiences,
+   visibility, and real-world interaction. Three simple partnership tiers, designed to be clear and execution friendly.</p>
+      </div>
+
+      <div class="tier-grid">
+        <div class="tier-card c-reveal">
+          <div class="tier-name">silver</div>
+          <ul class="tier-list">
+            <li>stage shoutout during the event</li>
+            <li>logo on event page &amp; posters</li>
+            <li>mention in post-event recap</li>
+          </ul>
+          <div class="tier-foot">A smart entry point for early visibility</div>
+        </div>
+
+        <div class="tier-card tier-featured c-reveal">
+          <div class="tier-tag">most popular</div>
+          <div class="tier-name">gold</div>
+          <ul class="tier-list">
+            <li>everything in silver</li>
+            <li>booth / activation space on venue</li>
+            <li>stage mention + product demo slot</li>
+            <li>2 promo posts from pipeup handles</li>
+          </ul>
+          <div class="tier-foot">Ideal for sampling, demos, and active engagement</div>
+        </div>
+
+        <div class="tier-card c-reveal">
+          <div class="tier-name">title sponsor</div>
+          <ul class="tier-list">
+            <li>"creator carnival powered by [your brand]"</li>
+            <li>full branding across venue &amp; assets</li>
+            <li>speaking slot on stage</li>
+            <li>direct access to all 50 creators' profiles</li>
+          </ul>
+          <div class="tier-foot">Our highest-visibility partnership slot</div>
+        </div>
+      </div>
+
+      <div class="carn-ctas" style="justify-content:flex-start;margin-top:34px;">
+  <a href="#register" class="carn-btn carn-btn-primary">talk to us about sponsorship</a>
+</div>
+    </div>
+  </section>
+
+  <!-- ══════════ REGISTER ══════════ -->
+  <section class="carn-form-section" id="register">
+    <div class="carn-wrap">
+      <div class="c-reveal" style="text-align:center;">
+        <div class="carn-s-eye" style="justify-content:center;">interest form</div>
+        <h2 class="carn-s-ttl">apni seat <span class="carn-serif">block karo</span></h2>
+        <p class="carn-s-sub" style="margin-left:auto;margin-right:auto;text-align:center;">abhi koi payment nahi lena hai
+          - bas interest bata do. venue final hote hi sabse pehle tumhe batayenge.</p>
+      </div>
+
+      <div class="carn-form-box c-reveal">
+        <div class="carn-toggle" id="carnToggle">
+          <button type="button" class="active" data-type="creator">i'm a creator</button>
+          <button type="button" data-type="brand">i'm a brand</button>
+        </div>
+
+        <form id="carnivalForm">
+          <div class="cf2-row">
+            <div class="cf2-field">
+              <label for="cn-name">your name</label>
+              <input type="text" id="cn-name" name="name" placeholder="e.g. priya sharma" required>
+            </div>
+            <div class="cf2-field">
+              <label for="cn-phone">whatsapp number</label>
+              <input type="tel" id="cn-phone" name="phone" placeholder="10 digit number" required>
+            </div>
+          </div>
+
+          <div class="cf2-row">
+            <div class="cf2-field">
+              <label for="cn-email">email</label>
+              <input type="email" id="cn-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="cf2-field">
+              <label for="cn-city">city</label>
+              <input type="text" id="cn-city" name="city" placeholder="e.g. bengaluru" required>
+            </div>
+          </div>
+
+          <div class="cf2-row" id="creatorOnlyFields">
+            <div class="cf2-field">
+              <label for="cn-ig">instagram handle / link</label>
+              <input type="text" id="cn-ig" name="igLink" placeholder="@yourhandle">
+            </div>
+            <div class="cf2-field">
+              <label for="cn-niche">your niche</label>
+              <select id="cn-niche" name="niche">
+                <option value="">select one</option>
+                <option>lifestyle</option>
+                <option>comedy</option>
+                <option>fashion &amp; beauty</option>
+                <option>tech</option>
+                <option>fitness</option>
+                <option>food</option>
+                <option>education</option>
+                <option>gaming</option>
+                <option>finance</option>
+                <option>other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cf2-field" id="brandOnlyField" style="display:none;">
+            <label for="cn-company">company / brand name</label>
+            <input type="text" id="cn-company" name="company" placeholder="your brand name">
+          </div>
+
+          <div class="pay-question" id="payQuestion">
+            <div class="pay-q-ttl">are you willing to pay &#8377;499 and support this event?</div>
+            <div class="pay-opts">
+              <label class="pay-opt"><input type="radio" name="willingToPay" value="yes" required><span>yes, count me in</span></label>
+              <label class="pay-opt"><input type="radio" name="willingToPay" value="maybe"><span>maybe, need details</span></label>
+              <label class="pay-opt"><input type="radio" name="willingToPay" value="no"><span>no, free only</span></label>
+            </div>
+          </div>
+
+          <div class="cf2-field">
+            <label for="cn-msg">anything you want at the carnival? (optional)</label>
+            <textarea id="cn-msg" name="message" rows="3" placeholder="games, workshops, brands you'd love to meet..."></textarea>
+          </div>
+
+          <button type="submit" class="carn-btn carn-btn-primary carn-submit" id="carnSubmit">
+            lock my interest
+            <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="carn-success" id="carnSuccess">&#10003; done! tumhari seat interest note ho gayi - venue final hote hi
+          whatsapp pe update aayega.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="carn-footer">
+    creator carnival &middot; a pipeup event &middot; <a href="mailto:founder@pipeup.in" style="color:rgba(255,154,46,.8);text-decoration:none;">founder@pipeup.in</a>
+  </footer>
+
+  <script>
+    /* ══════ COUNTDOWN (1 September) ══════ */
+    const eventDate = new Date('2026-09-01T10:00:00+05:30').getTime();
+    function tickCountdown() {
+      const diff = eventDate - Date.now();
+      const pad = n => String(Math.max(0, n)).padStart(2, '0');
+      if (diff <= 0) {
+        ['cdDays','cdHours','cdMins','cdSecs'].forEach(id => document.getElementById(id).textContent = '00');
+        return;
+      }
+      document.getElementById('cdDays').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cdHours').textContent = pad(Math.floor(diff / 3600000) % 24);
+      document.getElementById('cdMins').textContent  = pad(Math.floor(diff / 60000) % 60);
+      document.getElementById('cdSecs').textContent  = pad(Math.floor(diff / 1000) % 60);
+    }
+    tickCountdown();
+    setInterval(tickCountdown, 1000);
+
+    /* ══════ REVEAL ON SCROLL ══════ */
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); cio.unobserve(e.target); } });
+    }, { threshold: .1 });
+    document.querySelectorAll('.c-reveal').forEach(el => cio.observe(el));
+
+    /* ══════ CREATOR / BRAND TOGGLE ══════ */
+   let regType = 'creator';
+
+document.querySelectorAll('#carnToggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#carnToggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    regType = btn.dataset.type;
+
+    document.getElementById('creatorOnlyFields').style.display = regType === 'creator' ? 'grid' : 'none';
+    document.getElementById('brandOnlyField').style.display = regType === 'brand' ? 'flex' : 'none';
+    document.getElementById('payQuestion').style.display = regType === 'creator' ? 'block' : 'none';
+
+    document.querySelectorAll('input[name="willingToPay"]').forEach(input => {
+      input.required = regType === 'creator';
+      if (regType === 'brand') input.checked = false;
+    });
+  });
+});
+
+    /* ══════ SUBMIT → FIRESTORE ══════ */
+    const carnForm = document.getElementById('carnivalForm');
+    carnForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('carnSubmit');
+      btn.disabled = true;
+      btn.innerHTML = 'saving...';
+
+      const fd = new FormData(carnForm);
+      const payload = {
+        type: regType,
+        name: fd.get('name') || '',
+        phone: fd.get('phone') || '',
+        email: fd.get('email') || '',
+        city: fd.get('city') || '',
+        igLink: fd.get('igLink') || '',
+        niche: fd.get('niche') || '',
+        company: fd.get('company') || '',
+        willingToPay: regType === 'creator' ? (fd.get('willingToPay') || '') : '',
+        message: fd.get('message') || '',
+        source: 'event.html',
+        submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      try {
+        await db.collection('creator_carnival_registrations').add(payload);
+        carnForm.style.display = 'none';
+        document.getElementById('carnSuccess').style.display = 'block';
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = 'try again';
+        alert('Something went wrong. Please try again or write to founder@pipeup.in.');
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+</script>
+</body>
+</html>
