@@ -337,14 +337,34 @@ document.querySelectorAll('#carnToggle button').forEach(btn => {
       };
 
       try {
-        await db.collection('creator_carnival_registrations').add(payload);
+        try {
+  const collectionName = regType === 'brand' ? 'brandapplications' : 'creator_applications';
+  await db.collection('creator_carnival_registrations').add(payload);
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'creator_carnival_form_submit', {
+      form_type: regType,
+      page_location: window.location.href
+    });
+  }
+
+  carnForm.reset();
+  carnForm.style.display = 'none';
+  document.getElementById('carnSuccess').style.display = 'block';
+} catch (err) {
+  console.error('Firestore submit error:', err);
+  btn.disabled = false;
+  btn.innerHTML = 'lock my interest';
+  alert('Firestore error: ' + err.message);
+}
         carnForm.style.display = 'none';
         document.getElementById('carnSuccess').style.display = 'block';
       } catch (err) {
-        btn.disabled = false;
-        btn.innerHTML = 'try again';
-        alert('Something went wrong. Please try again or write to founder@pipeup.in.');
-      }
+  console.error('Firestore submit error:', err);
+  btn.disabled = false;
+  btn.innerHTML = 'lock my interest';
+  alert('Firestore error: ' + err.message);
+}
     });
   </script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
