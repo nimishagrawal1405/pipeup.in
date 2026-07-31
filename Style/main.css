@@ -1679,4 +1679,31 @@ footer {
     width: 100%;
     justify-content: center;
   }
+}.creator-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creator-meta{
+  margin-top: 14px;
+  text-align: center;
+}
+
+.creator-name{
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.creator-role{
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.creator-socials{
+  margin-top: 14px;
 }
