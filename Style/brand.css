@@ -507,7 +507,7 @@ label .req {
 
 input[type=text],
 input[type=email],
-input[type=url],
+input[type=number],
 select,
 textarea {
   width: 100%;
